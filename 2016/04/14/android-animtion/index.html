@@ -57,18 +57,31 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android动画">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/android-animtion/index.html">
 <meta property="og:site_name" content="Ser Bad">
-<meta property="og:description">
-<meta property="og:image" content="http://yoursite.com/images/avatar.jpg">
-<meta property="og:updated_time" content="2016-04-10T12:30:26.808Z">
+<meta property="og:description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
+<meta property="og:updated_time" content="2016-04-14T13:54:23.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description">
-<meta name="twitter:image" content="http://yoursite.com/images/avatar.jpg">
+<meta name="twitter:title" content="android动画">
+<meta name="twitter:description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
 
 
 
@@ -86,13 +99,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    about | Ser Bad
-  
-</title>
+  <title> android动画 | Ser Bad </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -113,7 +120,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -193,10 +200,142 @@
 
   <div id="posts" class="posts-expand">
     
-    
-      <img src="/images/avatar.jpg" class="full-image">
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                android动画
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T21:45:03+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/android-animtion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/android-animtion/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于android的动画效果一共有三种</p>
+<blockquote>
+<ul>
+<li>View Animtion 即 tweened animation 补间动画</li>
+<li>Drawable Animation 即 frame-by-frame animation 帧动画</li>
+<li>Property Animation 属性动画<a id="more"></a>
+</li>
+</ul>
+</blockquote>
+<p> 关于这几种动画一直没有搞清楚，最近折腾好久才发现自己搞错了</p>
+<p> 前两种动画效果，网上的教程很多，只放一篇吧<br> <a href="http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html" target="_blank" rel="external">http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html</a></p>
+<p> 推荐一个Android官网最新的文档的网站，面翻墙，国内人做的镜像<br> <a href="http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html" target="_blank" rel="external">http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html</a></p>
+<p>Property Animation的动画找到了一篇很详细的介绍的</p>
+<blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/43536355" target="_blank" rel="external">Android属性动画完全解析(上)，初识属性动画的基本用法</a></li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/43816093" target="_blank" rel="external">Android属性动画完全解析(中)，ValueAnimator和ObjectAnimator的高级用法</a></li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/44171115" target="_blank" rel="external">Android属性动画完全解析(下)，Interpolator和ViewPropertyAnimator的用法</a></li>
+</ul>
+</blockquote>
+<p>特此记录下来，免得再犯错</p>
+<p>附上<code>ObjectAnimator.ofFloat(Object target, String propertyName, float... values);</code>中第二个参数<a href="http://developer.android.com/guide/topics/graphics/prop-animation.html" target="_blank" rel="external"><strong>propertyName</strong></a>的值</p>
+<blockquote>
+<ul>
+<li><strong><em>translationX</em></strong> and <strong><em>translationY</em></strong>  :<br>These properties control where the View is located as a delta from its left and top coordinates which are set by its layout container.</li>
+<li><strong><em>rotation</em></strong>, <strong><em>rotationX</em></strong>, and <strong><em>rotationY</em></strong>  :<br>These properties control the rotation in 2D (rotation property) and 3D around the pivot point.</li>
+<li><strong><em>scaleX</em></strong> and <strong><em>scaleY</em></strong>  :<br>These properties control the 2D scaling of a View around its pivot point.</li>
+<li><strong><em>pivotX</em></strong> and <strong><em>pivotY</em></strong>  :<br>These properties control the location of the pivot point, around which the rotation and scaling transforms occur. By default, the pivot point is located at the center of the object.</li>
+<li><strong><em>x</em></strong> and <strong><em>y</em></strong>  :<br>These are simple utility properties to describe the final location of the View in its container, as a sum of the left and top values and translationX and translationY values.</li>
+<li><strong><em>alpha</em></strong>  :<br>Represents the alpha transparency on the View. This value is 1 (opaque) by default, with a value of 0 representing full transparency (not visible).</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/13/about-technology-selection/" rel="next" title="关于技术选型">
+                <i class="fa fa-chevron-left"></i> 关于技术选型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -205,6 +344,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/14/android-animtion/"
+           data-title="android动画" data-url="http://yoursite.com/2016/04/14/android-animtion/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -224,8 +371,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -292,6 +448,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -383,6 +550,11 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
