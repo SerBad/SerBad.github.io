@@ -158,6 +158,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
@@ -184,6 +194,105 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/15/mysql-node-express/" itemprop="url">
+                  翻译：如何在Node.js和Express中使用MySql
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-15T22:57:37+08:00" content="2016-04-15">
+              2016-04-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/15/mysql-node-express/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/15/mysql-node-express/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="连接到mysql数据库"><a href="#连接到mysql数据库" class="headerlink" title="连接到mysql数据库"></a>连接到mysql数据库</h2><p>在这之前先安装正确的npm包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql</span><br></pre></td></tr></table></figure></p>
+<p><strong>mysql</strong> 是一个非常容易使用的模块，它提供了你可能需要的所有功能。安装好后，你需要连接数据库的方法是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host: <span class="string">'localhost'</span>,</span><br><span class="line">  user: <span class="string">'your_user'</span>,</span><br><span class="line">  password: <span class="string">'some_secret'</span>,</span><br><span class="line">  database: <span class="string">'database'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'You are now connected...'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/15/mysql-node-express/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -692,108 +801,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/31/ARIANNE/" itemprop="url">
-                  ARIANNE
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-31T23:07:07+08:00" content="2016-03-31">
-              2016-03-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/31/ARIANNE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/31/ARIANNE/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="ARIANNEE-EXCERPT-FROM-THE-WINDS-OF-WINTER"><a href="#ARIANNEE-EXCERPT-FROM-THE-WINDS-OF-WINTER" class="headerlink" title="ARIANNEE--EXCERPT FROM THE WINDS OF WINTER"></a>ARIANNEE--EXCERPT FROM THE WINDS OF WINTER</h2><p>They struck out north by northwest, across drylands and parched plains and pale sands toward Ghost Hill, the stronghold of House Toland, where the ship that would take them across the Sea of Dorne awaited them.  “Send a raven whenever you have news,” Prince Doran told her, “but report only what you know to be true.  We are lost in fog here, besieged by rumors, falsehoods, and traveler’s tales.  I dare not act until I know for a certainty what is happening.”</p>
-<p>War is happening, though Arianne, and this time Dorne will not be spared.  “Doom and death are coming,” Ellaria Sand had warned them, before she took her own leave from Prince Doran.  “It is time for my little snakes to scatter, the better to survive the carnage.”  Ellaria was returning to her father’s seat at Hellholt.  With her went her daughter Loreza, who had just turned seven.  Dorea remained at the Water Gardens, one child amongst a hundred.Obella was to be dispatched to Sunspear, to serve as a cupbearer to the wife of the castellan, Manfrey Martell.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/31/ARIANNE/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -832,13 +846,20 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
