@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android," />
 
 
 
@@ -57,15 +57,16 @@
 
 
 
-<meta name="description" content="北戈朝天怒风吼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ser Bad">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta name="description" content="SharedPreferences可以用来保存一些很简单的数据，对应的就是一个key-value。但是最近遇到一个问题就是在多进程的时候，没有办法同步保存数据。看到一个解决办法是Context.MODE_MULTI_PROCESS 来进行多线程访问。在官网在介绍这个方法的时候是这样子的：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于SharedPreferences的一次问题">
+<meta property="og:url" content="http://yoursite.com/2016/06/02/a-problem-about-sharedPreferencesde/index.html">
 <meta property="og:site_name" content="Ser Bad">
-<meta property="og:description" content="北戈朝天怒风吼">
+<meta property="og:description" content="SharedPreferences可以用来保存一些很简单的数据，对应的就是一个key-value。但是最近遇到一个问题就是在多进程的时候，没有办法同步保存数据。看到一个解决办法是Context.MODE_MULTI_PROCESS 来进行多线程访问。在官网在介绍这个方法的时候是这样子的：">
+<meta property="og:updated_time" content="2016-06-02T13:12:59.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ser Bad">
-<meta name="twitter:description" content="北戈朝天怒风吼">
+<meta name="twitter:title" content="关于SharedPreferences的一次问题">
+<meta name="twitter:description" content="SharedPreferences可以用来保存一些很简单的数据，对应的就是一个key-value。但是最近遇到一个问题就是在多进程的时候，没有办法同步保存数据。看到一个解决办法是Context.MODE_MULTI_PROCESS 来进行多线程访问。在官网在介绍这个方法的时候是这样子的：">
 
 
 
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title> 归档 | Ser Bad </title>
+  <title> 关于SharedPreferences的一次问题 | Ser Bad </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -104,7 +105,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -192,255 +193,126 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 10 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/02/a-problem-about-sharedPreferencesde/" itemprop="url">
-              
-                <span itemprop="name">关于SharedPreferences的一次问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-02T20:50:22+08:00"
-              content="2016-06-02" >
-          06-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/02/INSTALL-FAILED-NO-MATCHING-ABIS/" itemprop="url">
-              
-                <span itemprop="name">关于错误INSTALL_FAILED_NO_MATCHING_ABIS</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-02T20:44:09+08:00"
-              content="2016-06-02" >
-          06-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/20/recyclerview/" itemprop="url">
-              
-                <span itemprop="name">recyclerview</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-20T21:13:42+08:00"
-              content="2016-04-20" >
-          04-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/15/mysql-node-express/" itemprop="url">
-              
-                <span itemprop="name">翻译：如何在Node.js和Express中使用MySql</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-15T22:57:37+08:00"
-              content="2016-04-15" >
-          04-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/14/android-animtion/" itemprop="url">
-              
-                <span itemprop="name">android动画</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-14T21:45:03+08:00"
-              content="2016-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/13/about-technology-selection/" itemprop="url">
-              
-                <span itemprop="name">关于技术选型</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-13T20:59:36+08:00"
-              content="2016-04-13" >
-          04-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于SharedPreferences的一次问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T20:50:22+08:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/a-problem-about-sharedPreferencesde/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/a-problem-about-sharedPreferencesde/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
 
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SharedPreferences可以用来保存一些很简单的数据，对应的就是一个key-value。但是最近遇到一个问题就是在多进程的时候，没有办法同步保存数据。看到一个解决办法是<code>Context.MODE_MULTI_PROCESS</code> 来进行多线程访问。在官网在介绍这个方法的时候是这样子的：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">This constant was deprecated in API level 23.</span><br><span class="line">MODE_MULTI_PROCESS does not work reliably in some versions of Android, and furthermore does not provide any mechanism for reconciling concurrent modifications across processes.</span><br><span class="line">Applications should not attempt to use it.</span><br><span class="line">Instead, they should use an explicit cross-process data management approach such as ContentProvider.</span><br><span class="line"></span><br><span class="line">SharedPreference loading flag: when set, the file on disk will be checked for modification even if the shared preferences instance is already loaded in this process.</span><br><span class="line">This behavior is sometimes desired in cases where the application has multiple processes, all writing to the same SharedPreferences file.</span><br><span class="line">Generally there are better forms of communication between processes, though.</span><br><span class="line"></span><br><span class="line">This was the legacy (but undocumented) behavior in and before Gingerbread (Android 2.3) and this flag is implied when targetting such releases.</span><br><span class="line">For applications targetting SDK versions greater than Android 2.3, this flag must be explicitly set if desired.</span><br></pre></td></tr></table></figure></p>
+<p>在6.0以上这个方法已经被弃用了，最低支持2.3。而且最好使用<code>ContentProvider</code>。<br>一定要用的话，要尽力避免同时去操作SharedPreferencesde。其实也找到一些开源的库，可是觉得没有必要，所以还是算了。</p>
+<p>放一些链接：</p>
+<ul>
+<li><a href="https://github.com/android-cn/android-discuss/issues/135" target="_blank" rel="external">https://github.com/android-cn/android-discuss/issues/135</a></li>
+<li><a href="http://zmywly8866.github.io/2015/09/09/sharedpreferences-in-multiprocess.html" target="_blank" rel="external">http://zmywly8866.github.io/2015/09/09/sharedpreferences-in-multiprocess.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/INSTALL-FAILED-NO-MATCHING-ABIS/" rel="next" title="关于错误INSTALL_FAILED_NO_MATCHING_ABIS">
+                <i class="fa fa-chevron-left"></i> 关于错误INSTALL_FAILED_NO_MATCHING_ABIS
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -448,6 +320,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/02/a-problem-about-sharedPreferencesde/"
+           data-title="关于SharedPreferences的一次问题" data-url="http://yoursite.com/2016/06/02/a-problem-about-sharedPreferencesde/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -467,8 +347,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -542,6 +431,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -633,11 +533,10 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
 
 
   

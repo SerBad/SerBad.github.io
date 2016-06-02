@@ -73,7 +73,7 @@ Property Animation 属性动画">
 View Animtion 即 tweened animation 补间动画
 Drawable Animation 即 frame-by-frame animation 帧动画
 Property Animation 属性动画">
-<meta property="og:updated_time" content="2016-04-15T17:25:32.834Z">
+<meta property="og:updated_time" content="2016-06-02T12:46:40.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android动画">
 <meta name="twitter:description" content="关于android的动画效果一共有三种
@@ -307,6 +307,19 @@ Property Animation 属性动画">
 <li><strong><em>alpha</em></strong>  :<br>Represents the alpha transparency on the View. This value is 1 (opaque) by default, with a value of 0 representing full transparency (not visible).</li>
 </ul>
 </blockquote>
+<p>##update:<br> 关于上面那个值，最近发现自己错了，一直懒得改这个地方。其实那个只要你在<code>target</code> 里面你定义一个<code>setXxYy(float f)</code> 这个 <code>xxYy</code> 就可以用在 <code>propertyName</code> 。很简单的，还支持：</p>
+<ul>
+<li><strong>public static ObjectAnimator ofArgb (Object target, String propertyName, int… values)</strong></li>
+<li><strong>public static ObjectAnimator ofInt (Object target, String propertyName, int… values)</strong></li>
+<li><strong>public static ObjectAnimator ofMultiFloat (Object target, String propertyName, float[][] values)</strong></li>
+</ul>
+<p>还有一个是<code>android.animation.ValueAnimator</code>  ，其实<code>ObjectAnimator</code> 也是继承自<code>ValueAnimator</code> 的。</p>
+<ul>
+<li><strong>public static ValueAnimator ofArgb (int… values)</strong></li>
+<li><strong>public static ValueAnimator ofFloat (float… values)</strong></li>
+<li><strong>public static ValueAnimator ofInt (int… values)</strong></li>
+</ul>
+<p>以上还有很多方法都是提供，值的变化的，感兴趣的可以去查看文档。</p>
 
       
     </div>
@@ -412,7 +425,7 @@ Property Animation 属性动画">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
