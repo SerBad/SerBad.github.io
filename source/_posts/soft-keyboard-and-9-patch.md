@@ -4,7 +4,6 @@ date: 2016-08-24 23:30:49
 tags: Android
 comments: true
 ---
-
 最近在做一个类似聊天的功能，所以需要获取到软键盘的高度来控制界面的显示，同时有一些手机上面有虚拟按键，在界面布局的时候需要注意。下面的代码就是一段获取手机软键盘高度的办法。
 <!-- more -->
 ```java
@@ -41,6 +40,19 @@ comments: true
 		}
 	}
 ```
+有一个 **ViewTreeObserver** 的类，可以用来监听view状态的变化，包括焦点改变、开始绘制、触摸事件等等的变化，如果要想控制某个控件的高度，可以利用这个类来实现，如下所示：
+```java
+	view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+			 /**
+	         * Callback method to be invoked when the global layout state or the visibility of views
+	         * within the view tree changes
+	         */
+            @Override
+            public void onGlobalLayout() {
+                //这里放你要实现的效果。
+            }
+        });
+```
 下面是获取手机状态栏高度的办法
 ```java
 	// 获取手机状态栏高度
@@ -64,9 +76,9 @@ comments: true
 对于聊天框，一开始想的是自定义控件的办法，后来在网上找到了**9-patch**，可以自动拉伸图片，需要用到的是**.png**的图片，可以找美工切好图，在Android studio上，右键选择图片，可以自动生成**xx.9.png**的文件，如下图：
 ![xx.9.png](http://img.blog.csdn.net/20160824174835941)
 
-在```sdk\tools\``` 下面有**draw9patch** 命令，直接打开拉入图片也能生成**9-Patch**，如下图：
+在```\sdk\tools\``` 下面有 **draw9patch**  命令，如果你配置了路径了，可以直接在命令行使用**draw9patch**打开。至于如何配置路径，这里就不赘述了。打开之后导入图片就能生成 **9-Patch** ，如下图：
 ![draw9patch](http://img.blog.csdn.net/20160824204210485)
 
-下面就是最终效果了，需要注意的是，生成的**xx.9.png**文件需保存在 **drawable**的目录下面，然后就可以直接调用了。
+下面就是最终效果了，需要注意的是，生成的 **xx.9.png** 文件需保存在 **drawable** 的目录下面，然后就可以直接调用了。
 在工具上，有边线可以直接拖动，多试验几次找到最合适自己的，如图所示黑色阴影是要显示的区域的边距，两条绿色区域的交叉处就是最后会被拉伸的地方，右边就是最后被拉伸的效果图。
 ![效果](http://img.blog.csdn.net/20160824174900410)
