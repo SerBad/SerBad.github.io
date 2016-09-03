@@ -7,8 +7,8 @@ comments: true
 当前activity截图以及包含打开的dialog，没有找到官方提供的截图方法，当前方法是读取要截图的view的缓存然后绘制称为图片，要保存打开的dialog，如果需要背景，那就把背景绘制到一起，就可以了。
 <!-- more -->
 ```java
-	View mainView = getWindow().getDecorView();
-	//也可以用下面的，效果等同于上面的效果
+		View mainView = getWindow().getDecorView();
+		//也可以用下面的，效果等同于上面的效果
     //mainView= findViewById(android.R.id.content);
     mainView.setDrawingCacheEnabled(true);
     mainView.buildDrawingCache();
@@ -22,7 +22,7 @@ comments: true
     mainView.getLocationOnScreen(location);
     int location2[] = new int[2];
     dialogView.getLocationOnScreen(location2);
-	dialogView.setDrawingCacheEnabled(true);
+		dialogView.setDrawingCacheEnabled(true);
     dialogView.buildDrawingCache();
     Bitmap bitmap2 = Bitmap.createBitmap(dialogView.getDrawingCache(), 0, 0, dialogView.getWidth(), dialogView.getHeight());
     Canvas canvas = new Canvas(bitmap);
@@ -32,7 +32,7 @@ comments: true
 ```
 下面是保存bitmap的方法
 ```java
-	public void saveBitmap(Bitmap bitmap,String fileName){
+		public void saveBitmap(Bitmap bitmap,String fileName){
 		File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 	    File imageFile = new File(path, fileName+".png");
 	    FileOutputStream fileOutPutStream = null;
