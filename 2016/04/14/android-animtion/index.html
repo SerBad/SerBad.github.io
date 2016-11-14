@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android动画">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/android-animtion/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
+<meta property="og:updated_time" content="2016-11-14T02:26:18.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android动画">
+<meta name="twitter:description" content="关于android的动画效果一共有三种
+
+
+View Animtion 即 tweened animation 补间动画
+Drawable Animation 即 frame-by-frame animation 帧动画
+Property Animation 属性动画">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> android动画 | Ser Bad </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ser Bad</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">have a nice day</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                android动画
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T21:45:03+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/android-animtion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/android-animtion/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于android的动画效果一共有三种</p>
+<blockquote>
+<ul>
+<li>View Animtion 即 tweened animation 补间动画</li>
+<li>Drawable Animation 即 frame-by-frame animation 帧动画</li>
+<li>Property Animation 属性动画</li>
+</ul>
+</blockquote>
+  <a id="more"></a>
+<p> 关于这几种动画一直没有搞清楚，最近折腾好久才发现自己搞错了</p>
+<p> 前两种动画效果，网上的教程很多，只放一篇吧<br> <a href="http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html" target="_blank" rel="external">http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html</a></p>
+<p> 推荐一个Android官网最新的文档的网站，面翻墙，国内人做的镜像<br> <a href="http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html" target="_blank" rel="external">http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html</a></p>
+<p>Property Animation的动画找到了一篇很详细的介绍的</p>
+<blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/43536355" target="_blank" rel="external">Android属性动画完全解析(上)，初识属性动画的基本用法</a></li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/43816093" target="_blank" rel="external">Android属性动画完全解析(中)，ValueAnimator和ObjectAnimator的高级用法</a></li>
+<li><a href="http://blog.csdn.net/guolin_blog/article/details/44171115" target="_blank" rel="external">Android属性动画完全解析(下)，Interpolator和ViewPropertyAnimator的用法</a></li>
+</ul>
+</blockquote>
+<p>特此记录下来，免得再犯错</p>
+<p>附上<code>ObjectAnimator.ofFloat(Object target, String propertyName, float... values);</code>中第二个参数<a href="http://developer.android.com/guide/topics/graphics/prop-animation.html" target="_blank" rel="external"><strong>propertyName</strong></a>的值</p>
+<blockquote>
+<ul>
+<li><strong><em>translationX</em></strong> and <strong><em>translationY</em></strong>  :<br>These properties control where the View is located as a delta from its left and top coordinates which are set by its layout container.</li>
+<li><strong><em>rotation</em></strong>, <strong><em>rotationX</em></strong>, and <strong><em>rotationY</em></strong>  :<br>These properties control the rotation in 2D (rotation property) and 3D around the pivot point.</li>
+<li><strong><em>scaleX</em></strong> and <strong><em>scaleY</em></strong>  :<br>These properties control the 2D scaling of a View around its pivot point.</li>
+<li><strong><em>pivotX</em></strong> and <strong><em>pivotY</em></strong>  :<br>These properties control the location of the pivot point, around which the rotation and scaling transforms occur. By default, the pivot point is located at the center of the object.</li>
+<li><strong><em>x</em></strong> and <strong><em>y</em></strong>  :<br>These are simple utility properties to describe the final location of the View in its container, as a sum of the left and top values and translationX and translationY values.</li>
+<li><strong><em>alpha</em></strong>  :<br>Represents the alpha transparency on the View. This value is 1 (opaque) by default, with a value of 0 representing full transparency (not visible).</li>
+</ul>
+</blockquote>
+<p>##update:<br> 关于上面那个值，最近发现自己错了，一直懒得改这个地方。其实那个只要你在<code>target</code> 里面你定义一个<code>setXxYy(float f)</code> 这个 <code>xxYy</code> 就可以用在 <code>propertyName</code> 。很简单的，还支持：</p>
+<ul>
+<li><strong>public static ObjectAnimator ofArgb (Object target, String propertyName, int… values)</strong></li>
+<li><strong>public static ObjectAnimator ofInt (Object target, String propertyName, int… values)</strong></li>
+<li><strong>public static ObjectAnimator ofMultiFloat (Object target, String propertyName, float[][] values)</strong></li>
+</ul>
+<p>还有一个是<code>android.animation.ValueAnimator</code>  ，其实<code>ObjectAnimator</code> 也是继承自<code>ValueAnimator</code> 的。</p>
+<ul>
+<li><strong>public static ValueAnimator ofArgb (int… values)</strong></li>
+<li><strong>public static ValueAnimator ofFloat (float… values)</strong></li>
+<li><strong>public static ValueAnimator ofInt (int… values)</strong></li>
+</ul>
+<p>以上还有很多方法都是提供，值的变化的，感兴趣的可以去查看文档。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/13/about-technology-selection/" rel="next" title="关于技术选型">
+                <i class="fa fa-chevron-left"></i> 关于技术选型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/15/mysql-node-express/" rel="prev" title="翻译：如何在Node.js和Express中使用MySql">
+                翻译：如何在Node.js和Express中使用MySql <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/14/android-animtion/"
+           data-title="android动画" data-url="http://yoursite.com/2016/04/14/android-animtion/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Ser Bad" />
+          <p class="site-author-name" itemprop="name">Ser Bad</p>
+          <p class="site-description motion-element" itemprop="description">北戈朝天怒风吼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/SerBad" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SerBad" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Ser_Bad" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ser Bad</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"serbad"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

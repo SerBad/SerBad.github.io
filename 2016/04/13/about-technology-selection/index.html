@@ -1,0 +1,612 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="随笔," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="关于技术选型对于一个初成长的互联网团队而言，如何选定自己团队需要用的技术是很关键
+
+要兼顾团队的实力，我相信有一定量的初创团队在一开始的时候的技术实力一定是很弱的，而且也没有多余的钱去请大牛来帮你开发，如果使用外包的话，如果使用外包的最后一定会遇到一堆的坑，说不定哪天恰好在你高速发展的时候你不得不因为技术原因推到重来。那个时候就真的是欲哭无泪了。
+另一方面也要考虑后面的可维护性，不然随着业务的扩展">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于技术选型">
+<meta property="og:url" content="http://yoursite.com/2016/04/13/about-technology-selection/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="关于技术选型对于一个初成长的互联网团队而言，如何选定自己团队需要用的技术是很关键
+
+要兼顾团队的实力，我相信有一定量的初创团队在一开始的时候的技术实力一定是很弱的，而且也没有多余的钱去请大牛来帮你开发，如果使用外包的话，如果使用外包的最后一定会遇到一堆的坑，说不定哪天恰好在你高速发展的时候你不得不因为技术原因推到重来。那个时候就真的是欲哭无泪了。
+另一方面也要考虑后面的可维护性，不然随着业务的扩展">
+<meta property="og:updated_time" content="2016-11-14T02:26:18.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于技术选型">
+<meta name="twitter:description" content="关于技术选型对于一个初成长的互联网团队而言，如何选定自己团队需要用的技术是很关键
+
+要兼顾团队的实力，我相信有一定量的初创团队在一开始的时候的技术实力一定是很弱的，而且也没有多余的钱去请大牛来帮你开发，如果使用外包的话，如果使用外包的最后一定会遇到一堆的坑，说不定哪天恰好在你高速发展的时候你不得不因为技术原因推到重来。那个时候就真的是欲哭无泪了。
+另一方面也要考虑后面的可维护性，不然随着业务的扩展">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 关于技术选型 | Ser Bad </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ser Bad</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">have a nice day</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于技术选型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T20:59:36+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/about-technology-selection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/about-technology-selection/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="关于技术选型"><a href="#关于技术选型" class="headerlink" title="关于技术选型"></a>关于技术选型</h2><p>对于一个初成长的互联网团队而言，如何选定自己团队需要用的技术是很关键</p>
+<ol>
+<li>要兼顾团队的实力，我相信有一定量的初创团队在一开始的时候的技术实力一定是很弱的，而且也没有多余的钱去请大牛来帮你开发，如果使用外包的话，如果使用外包的最后一定会遇到一堆的坑，说不定哪天恰好在你高速发展的时候你不得不因为技术原因推到重来。那个时候就真的是欲哭无泪了。</li>
+<li>另一方面也要考虑后面的可维护性，不然随着业务的扩展，可维护性的降低，代码迭代的越来越艰难，新功能的开发也越来越慢。现在前端、后端、移动端的选择越来越多，之所以出现这么多的选择就是为了快速提高开发效率，分工合作，高度耦合，提高网站或者app的访问速度。</li>
+<li>不能只使用新的技术，新的技术有可能不稳定，说不定过段时间就被淘汰了。而且太过新颖的技术，网上的教程也很少，甚至有可能连Google都找不到，也不利于新的技术的学习。</li>
+<li>还有最关键的一条，团队才是最重要的。<a id="more"></a>
+</li>
+</ol>
+<h2 id="关于我的选择"><a href="#关于我的选择" class="headerlink" title="关于我的选择"></a>关于我的选择</h2><p>首先我们的主要目标并不是需要一个强大的后台，主要目标是有一个前台的展示效果，足够的好看，访问速度足够的快就行了，而且，团队里面的技术人员都不是做后台的，我自己平时主要是Android程序员，虽然会Java，可是使用Java来开发后台却是一件麻烦的事情，也不利于团队协作。如果说把前端完全外包出去，一来无法保证开发进度，也无法保证开发质量，也不利于后期的维护。</p>
+<p>经过几天的思考选择，最后我选择了node.js 用到的技术有：</p>
+<ul>
+<li><a href="http://www.imooc.com/learn/75" title="一个视频教学的例子" target="_blank" rel="external"><strong>node.js</strong></a>  主要用于连接前端和后端，也可以单独作为后端来使用，好处就是响应速度更快，网上的教程也足够的多。</li>
+<li><strong>express</strong> 基于node.js的一个MVC的框架，好处就是足够的流行，教程也很多。</li>
+<li><a href="http://www.bootcss.com/" title="bootstrap的中文教程网站" target="_blank" rel="external"><strong>bootstrap</strong></a> 这是一个前端的展示页面，看了一些实例之后觉得，可以应付我们的前端需求，也很简单，上手也很容易，文杰也应该能够上手,而且最新的<a href="http://v3.bootcss.com/css/" title="关于bootstrap3的介绍" target="_blank" rel="external">bootstrap3</a>对于移动端的支持也足够的好。</li>
+<li><strong>mysql</strong> 本来看到有的文章说node.js因为是使用js写的，所以对于MongoDB天然地支持，可是我看了一些文档之后觉得，现在没必要使用MongoDB，对于团队来说学习成本太高了，但是现在我对mysql更熟悉的情况下，贸然使用另一个完全不熟悉的数据库会有很大的风险。</li>
+</ul>
+<blockquote>
+<p><strong>貌似需要用到语言有 sql，js，html，css，less</strong></p>
+</blockquote>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这几天就是在面临一些艰难的选择，虽然我知道在Android程序员的这条路上，我还有很多的路要走，可是现在面临新的需求却不得不去解决它。哪怕有可能我在Android这条路上目前无法做到足够的深度，不，花更多的时间就是了。</p>
+<p>作为程序员而言，最重要的是什么，那就是学习能力了，恐怕很多人都会对这句话保持赞同的。是时候继续开始新的学习了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/随笔/" rel="tag">#随笔</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/10/ThinkingOne/" rel="next" title="思考篇：1">
+                <i class="fa fa-chevron-left"></i> 思考篇：1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/14/android-animtion/" rel="prev" title="android动画">
+                android动画 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/13/about-technology-selection/"
+           data-title="关于技术选型" data-url="http://yoursite.com/2016/04/13/about-technology-selection/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Ser Bad" />
+          <p class="site-author-name" itemprop="name">Ser Bad</p>
+          <p class="site-description motion-element" itemprop="description">北戈朝天怒风吼</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/SerBad" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SerBad" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Ser_Bad" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于技术选型"><span class="nav-number">1.</span> <span class="nav-text">关于技术选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于我的选择"><span class="nav-number">2.</span> <span class="nav-text">关于我的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ser Bad</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"serbad"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
