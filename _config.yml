@@ -27,7 +27,6 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
-
 avatar: /images/avatar.jpg
 duoshuo_shortname: serbad
 # Writing
