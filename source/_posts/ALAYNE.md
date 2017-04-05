@@ -2,7 +2,6 @@
 title: ALAYNE
 date: 2016-04-06 20:59:24
 tags: 冰与火之歌
-comments: true
 ---
 ## ALAYNE\--EXCERPT FROM THE WINDS OF WINTER
 

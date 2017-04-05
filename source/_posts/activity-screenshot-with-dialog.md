@@ -2,7 +2,6 @@
 title: 当前activity截图以及包含打开的dialog
 date: 2016-08-28 14:08:51
 tags: Android
-comments: true
 ---
 当前activity截图以及包含打开的dialog，没有找到官方提供的截图方法，当前方法是读取要截图的view的缓存然后绘制称为图片，要保存打开的dialog，如果需要背景，那就把背景绘制到一起，就可以了。
 <!-- more -->

@@ -3,7 +3,6 @@ title: android动画
 date: 2016-04-14 21:45:03
 update: 2016-06-02 20:44:09
 tags: android
-comments: true
 ---
 
 关于android的动画效果一共有三种
