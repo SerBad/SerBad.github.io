@@ -2,6 +2,7 @@
 title: 关于错误INSTALL_FAILED_NO_MATCHING_ABIS
 date: 2016-06-02 20:44:09
 tags: android
+comments: false
 ---
 故事的起因就是因为在往genymotion安装的应用的时候，出现了`INSTALL_FAILED_NO_MATCHING_ABIS`。
 ![错误](http://img.blog.csdn.net/20160428170835800)

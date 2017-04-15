@@ -4,17 +4,17 @@
 
 # Site
 title: Ser Bad
-subtitle: have a nice day
+subtitle: Have a nice day！
 description: 北戈朝天怒风吼
 author: Ser Bad
 language: zh-Hans
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory

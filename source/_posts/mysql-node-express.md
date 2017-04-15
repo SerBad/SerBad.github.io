@@ -5,6 +5,7 @@ tags:
   - Node.js
   - mysql
   - Express
+comments: false
 ---
 
 ## 连接到mysql数据库
