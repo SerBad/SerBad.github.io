@@ -1,5 +1,5 @@
 ---
-title: 
+title:
 date: 2016-04-06 20:17:53
 updated:
 tags:
@@ -15,3 +15,5 @@ comments: false
 
 图片出处：
 <http://techgnotic.deviantart.com/journal/Watch-The-Throne-The-Wars-To-Come-526718761>
+
+{% jsfiddle shorttag   %}
