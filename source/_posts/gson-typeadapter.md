@@ -1,5 +1,5 @@
 ---
-title: gson-typeadapter
+title: Gson序列化
 date: 2017-03-21 01:09:43
 tags: android
 comments: false
