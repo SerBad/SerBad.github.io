@@ -1,6 +1,6 @@
 ---
-title: spirng boot maven多模块打包踩坑
-tags: android
+title: Spirng boot maven多模块打包踩坑
+tags: spring boot
 comments: false
 date: 2017-11-02 10:42:28
 ---
