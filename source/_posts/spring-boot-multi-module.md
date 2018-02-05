@@ -1,7 +1,7 @@
 ---
 title: Spirng boot maven多模块打包踩坑
 tags: spring boot
-comments: false
+
 date: 2017-11-02 10:42:28
 ---
 最近折腾了两次spring boot在maven下的多模块打包，踩了很多坑，现在记录如下。
