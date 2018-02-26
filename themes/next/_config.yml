@@ -135,10 +135,12 @@ font:
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
   #LinkLabel: Link
-    Weibo: http://weibo.com/SerBad
+    微博: http://weibo.com/SerBad
     GitHub: https://github.com/SerBad
+    豆瓣: https://www.douban.com/people/SerBad/
     Twitter: https://twitter.com/Ser_Bad
-
+    简书: https://www.jianshu.com/u/2F2aMX
+    csdn: http://blog.csdn.net/ser_bad
 
 # Social Links Icons
 # Icon Mapping:
@@ -151,7 +153,8 @@ social_icons:
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
   Twitter: twitter
-  Weibo: weibo
+  微博: weibo
+  # 豆瓣: DouBan
 
 
 # Sidebar Avatar
