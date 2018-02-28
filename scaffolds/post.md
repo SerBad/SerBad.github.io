@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: android
+tags: 随笔
 comments: false
 ---
