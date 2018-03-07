@@ -19,5 +19,4 @@ CSDN的网页改版了好多，而且还多了一个和以前人人网一样的�
 
 图片出处：
 <http://techgnotic.deviantart.com/journal/Watch-The-Throne-The-Wars-To-Come-526718761>
-
-{% jsfiddle shorttag   %}
+ 
