@@ -6,7 +6,7 @@ tags:
 comments: false
 ---
 {% fullimage /images/avatar.jpg %}
-
+ 
 ### 说明
 上面的图片，应该有人知道的，冰火里面提利昂，是一个侏儒，受尽了歧视，为了生存和证明自己，不断地学习，是一个很有智慧的人物，拥有很多粉丝，不会那么快领便当的。
 
@@ -19,4 +19,3 @@ CSDN的网页改版了好多，而且还多了一个和以前人人网一样的�
 
 图片出处：
 <http://techgnotic.deviantart.com/journal/Watch-The-Throne-The-Wars-To-Come-526718761>
- 
