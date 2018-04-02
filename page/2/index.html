@@ -1,15 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
 
 
 
@@ -30,9 +51,12 @@
 
 
 
+
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -42,34 +66,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
 
 
 
-<meta name="description" content="北戈朝天怒风吼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ser Bad">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Ser Bad">
-<meta property="og:description" content="北戈朝天怒风吼">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ser Bad">
-<meta name="twitter:description" content="北戈朝天怒风吼">
+
+
+
 
 
 
@@ -77,14 +92,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Gemini',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -96,18 +111,37 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="北戈朝天怒风吼">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ser Bad">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="北戈朝天怒风吼">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ser Bad">
+<meta name="twitter:description" content="北戈朝天怒风吼">
+
+
+
+
+
 
   <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title> Ser Bad </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Ser Bad - Have a nice day！</title>
   
 
 
@@ -118,10 +152,36 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
+</head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -129,29 +189,30 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Ser Bad</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Have a nice day！</p>
+        <h1 class="site-subtitle" itemprop="description">Have a nice day！</h1>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -166,44 +227,49 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-首页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-认知科学">
+    <a href="/categories/cognitive-science/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-snowflake-o"></i> <br />认知科学</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+  <li class="menu-item menu-item-归档">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
       
 
       
@@ -211,16 +277,28 @@
   
 
   
+
+  
 </nav>
+
+
+  
 
 
 
  </div>
     </header>
 
+    
+
+
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -233,7 +311,139 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-02-26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018-02-26/" itemprop="url">知识的边界</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T20:50:22+08:00">2018-02-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>知识是否有边界呢？这需要是一个问题吗？对于很多人来说，这的确不是一个问题，也许是因为无知，也许是因为无所谓，也许是看不到尽头的无奈。但是对于我来说，知识有边界吗？知识本身就是一个定义相当宽泛的定义，大到宇宙的真谛，小到思考的本质，这些都是可以称之为知识，“吾生有涯，而知也无涯”，如果以生命来衡量的话，我们一生都无法追求尽知识的力量，于是对知识怀有敬畏便是一件很好的事情。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018-02-26/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/spring-boot-multi-module/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,17 +461,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/spring-boot-multi-module/" itemprop="url">
-                  Spirng boot maven多模块打包踩坑
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/spring-boot-multi-module/" itemprop="url">Spirng boot maven多模块打包踩坑</a></h2>
         
 
         <div class="post-meta">
@@ -271,13 +473,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T10:42:28+08:00">
-                2017-11-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T10:42:28+08:00">2017-11-02</time>
             
 
+            
             
 
             
@@ -302,7 +503,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -314,7 +517,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/spring-boot-multi-module/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -322,17 +525,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -346,6 +549,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -358,7 +565,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/docker-php/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -376,17 +589,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/docker-php/" itemprop="url">
-                  Docker在PHP中的实践过程
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/docker-php/" itemprop="url">Docker在PHP中的实践过程</a></h2>
         
 
         <div class="post-meta">
@@ -396,13 +601,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T20:59:36+08:00">
-                2017-09-18
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-18T20:59:36+08:00">2017-09-18</time>
             
 
+            
             
 
             
@@ -425,7 +629,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -437,7 +643,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/docker-php/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -445,17 +651,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -469,6 +675,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -481,7 +691,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/docker-install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -499,17 +715,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/docker-install/" itemprop="url">
-                  docker安装的问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/docker-install/" itemprop="url">docker安装的问题</a></h2>
         
 
         <div class="post-meta">
@@ -519,13 +727,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T10:48:42+08:00">
-                2017-07-18
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-18T10:48:42+08:00">2017-07-18</time>
             
 
+            
             
 
             
@@ -548,7 +755,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -560,7 +769,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/docker-install/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -568,17 +777,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -592,6 +801,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -604,7 +817,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/right-lick-new-md‘file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -622,17 +841,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/right-lick-new-md‘file/" itemprop="url">
-                  右键新建md文件
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/right-lick-new-md‘file/" itemprop="url">右键新建md文件</a></h2>
         
 
         <div class="post-meta">
@@ -642,13 +853,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T14:10:28+08:00">
-                2017-07-10
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-10T14:10:28+08:00">2017-07-10</time>
             
 
+            
             
 
             
@@ -671,7 +881,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -683,7 +895,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/right-lick-new-md‘file/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -691,17 +903,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -715,6 +927,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -727,7 +943,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/Thinking4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,17 +967,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Thinking4/" itemprop="url">
-                  思考篇：4
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/Thinking4/" itemprop="url">思考篇：4</a></h2>
         
 
         <div class="post-meta">
@@ -765,13 +979,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T21:51:15+08:00">
-                2017-05-17
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T21:51:15+08:00">2017-05-17</time>
             
 
+            
             
 
             
@@ -794,7 +1007,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -806,7 +1021,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Thinking4/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -814,17 +1029,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -838,129 +1053,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Thinking3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ser Bad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ser Bad">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Thinking3/" itemprop="url">
-                  思考篇：3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T15:22:31+08:00">
-                2017-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>距离上次的随笔文章有段时间了，最近，CSDN上一篇文章因为一个标题“Android微信支付踩坑全记录”死活发不出去，也不知道踩中哪个敏感词，这就是在别人的平台上发布东西所必然面临的问题，包括我一直不看好的微信小程序。所以，我要继续维护我的Github page了。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Thinking3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -969,15 +1065,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -993,119 +1086,79 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Ser Bad" />
-          <p class="site-author-name" itemprop="name">Ser Bad</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ser Bad" />
+            
+              <p class="site-author-name" itemprop="name">Ser Bad</p>
               <p class="site-description motion-element" itemprop="description">北戈朝天怒风吼</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/SerBad" target="_blank" title="微博" rel="external nofollow"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/SerBad" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/people/SerBad/" target="_blank" title="豆瓣" rel="external nofollow"><i class="fa fa-fw fa-globe"></i>豆瓣</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Ser_Bad" target="_blank" title="Twitter" rel="external nofollow"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/2F2aMX" target="_blank" title="简书" rel="external nofollow"><i class="fa fa-fw fa-globe"></i>简书</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/ser_bad" target="_blank" title="csdn" rel="external nofollow"><i class="fa fa-fw fa-globe"></i>csdn</a>
+                  
+                </span>
+              
             </div>
           
 
           
+          
+
+          
+          
 
           
             
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/SerBad" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  微博
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/SerBad" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.douban.com/people/SerBad/" target="_blank" title="豆瓣">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  豆瓣
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Ser_Bad" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.jianshu.com/u/2F2aMX" target="_blank" title="简书">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  简书
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/ser_bad" target="_blank" title="csdn">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  csdn
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -1122,30 +1175,43 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Ser Bad</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1156,6 +1222,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -1176,45 +1244,14 @@
 
 
 
-  
-
-
-  
-
-
-
-
 
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
@@ -1222,9 +1259,83 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/three.js/91/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
 
 
 
@@ -1233,15 +1344,11 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -1263,8 +1370,6 @@
 
 
 
-  
-
 
 
 
@@ -1285,6 +1390,24 @@
   
 
   
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
 
 </body>
 </html>
