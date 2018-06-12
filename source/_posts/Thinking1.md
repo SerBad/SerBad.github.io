@@ -3,6 +3,7 @@ title: 思考篇：1
 date: 2016-04-10 21:51:15
 updated: 2016-09-03 14:45:13
 tags: 随笔
+categories: 随笔
 comments: false
 ---
 

@@ -2,6 +2,7 @@
 title: 思考篇：2
 date: 2016-12-27 00:00:00
 tags: 随笔
+categories: 随笔
 comments: false
 ---
 

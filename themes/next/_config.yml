@@ -114,9 +114,11 @@ index_with_subtitle: true
 # Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
+# https://fontawesome.com/v4.7.0/icons/ 图标地址，把图标名字前的fa去掉就可以了
 menu:
   首页: / || home
   认知科学: /categories/cognitive-science/ || snowflake-o
+  随笔: /categories/随笔/ || sticky-note-o
   标签: /tags/ || tags
   #categories: /categories/ || th
   归档: /archives/ || archive
