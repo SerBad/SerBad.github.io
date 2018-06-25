@@ -76,6 +76,12 @@ override fun onActivityReenter(resultCode: Int, data: Intent) {
 ```
 
 差不多就是这些吧，这些就能满足基本的共享元素动画了。需要注意的是，一定要设置正确的transitionName。
+还有一个fresco的坑，如果发现回到页面A的时候共享元素消失了话，可以设置
+```
+setLegacyVisibilityHandlingEnabled(true)
+```
+这是fresco1.4添加的关于共享u元素的bug修复。
+
 贴一个我觉得做的不错的
 - https://github.com/kitek/android-gallery.git
 - https://github.com/ongakuer/PhotoDraweeView
