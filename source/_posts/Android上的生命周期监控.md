@@ -5,9 +5,9 @@ comments: false
 date: 2018-07-23 13:36:11
 ---
 做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。
+<!-- more -->
 # Lifecycle  
 `Lifecycle`是Google在[Jetpack](https://developer.android.google.cn/jetpack/)中提出的，在包[`android.arch.lifecycle`](https://developer.android.com/reference/android/arch/lifecycle/package-summary.html)下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：
-<!-- more -->
 ```kotlin
 class myFragmentActivity(val fragmentActivity: FragmentActivity) : LifecycleObserver {
     init {
