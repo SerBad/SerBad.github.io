@@ -375,6 +375,34 @@
 
       <h3 class="post-title">
         
+            <a class="post-title-link" href="/Android上的生命周期监控/" itemprop="url">
+              
+                <span itemprop="name">Android上的生命周期监控</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-07-23T13:36:11+08:00"
+              content="2018-07-23" >
+          07-23
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
             <a class="post-title-link" href="/SharedElement/" itemprop="url">
               
                 <span itemprop="name">Android共享元素</span>
@@ -937,25 +965,7 @@
 
 </body>
 </html>
-     var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
+ Visitor num, with error message: ' + error.message);
               }
             });
           } else {

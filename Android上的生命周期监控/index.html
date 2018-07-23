@@ -118,23 +118,26 @@
 
 
 
-  <meta name="description" content="在这里记录一下android共享元素的方法，踩了满多坑的，其实蛮简单的，Android共享是从Android5.0开始提供的，之前的版本我没有去碰兼容，但是其实是有解决方法的。这里只是记录一下踩过的坑，不对共享元素做深入的分析。">
+  <meta name="description" content="做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。
+LifecycleLifecycle是Google在Jetpack中提出的，在包android.arch.lifecycle下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：123456789101">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android共享元素">
-<meta property="og:url" content="http://yoursite.com/SharedElement/index.html">
+<meta property="og:title" content="Android上的生命周期监控">
+<meta property="og:url" content="http://yoursite.com/Android上的生命周期监控/index.html">
 <meta property="og:site_name" content="Ser Bad">
-<meta property="og:description" content="在这里记录一下android共享元素的方法，踩了满多坑的，其实蛮简单的，Android共享是从Android5.0开始提供的，之前的版本我没有去碰兼容，但是其实是有解决方法的。这里只是记录一下踩过的坑，不对共享元素做深入的分析。">
-<meta property="og:updated_time" content="2018-06-25T04:27:40.382Z">
+<meta property="og:description" content="做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。
+LifecycleLifecycle是Google在Jetpack中提出的，在包android.arch.lifecycle下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：123456789101">
+<meta property="og:updated_time" content="2018-07-23T05:37:29.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android共享元素">
-<meta name="twitter:description" content="在这里记录一下android共享元素的方法，踩了满多坑的，其实蛮简单的，Android共享是从Android5.0开始提供的，之前的版本我没有去碰兼容，但是其实是有解决方法的。这里只是记录一下踩过的坑，不对共享元素做深入的分析。">
+<meta name="twitter:title" content="Android上的生命周期监控">
+<meta name="twitter:description" content="做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。
+LifecycleLifecycle是Google在Jetpack中提出的，在包android.arch.lifecycle下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：123456789101">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/SharedElement/"/>
+  <link rel="canonical" href="http://yoursite.com/Android上的生命周期监控/"/>
 
 
 
@@ -144,7 +147,7 @@
   };
 </script>
 
-  <title>Android共享元素 | Ser Bad</title>
+  <title>Android上的生命周期监控 | Ser Bad</title>
   
 
 
@@ -348,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/SharedElement/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android上的生命周期监控/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ser Bad">
@@ -365,7 +368,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Android共享元素</h2>
+          <h2 class="post-title" itemprop="name headline">Android上的生命周期监控</h2>
         
 
         <div class="post-meta">
@@ -377,7 +380,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T14:10:28+08:00">2018-06-22</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T13:36:11+08:00">2018-07-23</time>
             
 
             
@@ -392,7 +395,7 @@
 
           
           
-             <span id="/SharedElement/" class="leancloud_visitors" data-flag-title="Android共享元素">
+             <span id="/Android上的生命周期监控/" class="leancloud_visitors" data-flag-title="Android上的生命周期监控">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,23 +426,14 @@
       
 
       
-        <p>在这里记录一下android共享元素的方法，踩了满多坑的，其实蛮简单的，Android共享是从Android5.0开始提供的，之前的版本我没有去碰兼容，但是其实是有解决方法的。这里只是记录一下踩过的坑，不对共享元素做深入的分析。</p>
-<a id="more"></a>
-<p>首先从页面A跳转到页面B，那么页面A只需要调用<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.startActivity(context, intent, ActivityOptionsCompat.makeSceneTransitionAnimation(context, view, <span class="string">"zoomImageView"</span>).toBundle())</div></pre></td></tr></table></figure></p>
-<p>需要注意的是，需要传入要共享的view和共享view的transitionName的。然后在页面B对要共享的view设置一样的transitionName就好了。</p>
-<p>踩过坑，如果使用的是fresco的话，在页面被销毁的情况下，需要让view保持在页面上。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ActivityCompat.setExitSharedElementCallback(context, <span class="keyword">object</span> : SharedElementCallback() &#123;</div><div class="line">                    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSharedElementEnd</span><span class="params">(sharedElementNames: <span class="type">List</span>&lt;<span class="type">String</span>&gt;?,</span></span></div><div class="line">                                                    sharedElements: <span class="type">MutableList</span>&lt;<span class="type">View</span>&gt;?, sharedElementSnapshots: <span class="type">MutableList</span>&lt;<span class="type">View</span>&gt;?) &#123;</div><div class="line">                        <span class="keyword">super</span>.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots)</div><div class="line">                        <span class="keyword">for</span> (view <span class="keyword">in</span> sharedElements!!) &#123;</div><div class="line">                            <span class="keyword">if</span> (view <span class="keyword">is</span> SimpleDraweeView) &#123;</div><div class="line">                                view.show()</div><div class="line">                            &#125;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div></pre></td></tr></table></figure></p>
-<p>如果还是不行的话，在页面B的onCreate添加如下代码就可以了，话说fresco还是蛮反人类的，各种奇怪的问题。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">         window.sharedElementEnterTransition = AutoTransition() <span class="comment">// 进入</span></div><div class="line">         window.sharedElementReturnTransition = AutoTransition()<span class="comment">// 返回</span></div><div class="line">         ActivityCompat.setEnterSharedElementCallback(<span class="keyword">this</span>, <span class="keyword">object</span> : SharedElementCallback() &#123;</div><div class="line">             <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSharedElementEnd</span><span class="params">(sharedElementNames: <span class="type">List</span>&lt;<span class="type">String</span>&gt;?,</span></span></div><div class="line">                                             sharedElements: <span class="type">List</span>&lt;<span class="type">View</span>&gt;?, sharedElementSnapshots: <span class="type">List</span>&lt;<span class="type">View</span>&gt;?) &#123;</div><div class="line">                 <span class="keyword">for</span> (view <span class="keyword">in</span> sharedElements!!) &#123;</div><div class="line">                     <span class="keyword">if</span> (view <span class="keyword">is</span> PhotoDraweeView) &#123;</div><div class="line">                         (view <span class="keyword">as</span> PhotoDraweeView).setScale(<span class="number">1</span>f, <span class="literal">true</span>)</div><div class="line">                     &#125;</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">         &#125;)</div><div class="line">     &#125;</div></pre></td></tr></table></figure></p>
-<p>要想在结束的时候依然能够有共享元素的动画效果，需要调用的是<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">finishAfterTransition()</div></pre></td></tr></table></figure></p>
-<p>如果需要在页面B退出的时候，回调结果像<code>startActivityForResult</code>一样的话，需要的在<code>finishAfterTransition</code>方法之后，去调用<code>setResult</code>，在页面B的代码如下<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">finishAfterTransition</span><span class="params">()</span></span> &#123;</div><div class="line">      <span class="keyword">val</span> resultData = Intent()</div><div class="line">      resultData.putExtra(CURRENT_ITEM,“要回调的值”)</div><div class="line">      setResult(Activity.RESULT_OK, resultData)</div><div class="line">      <span class="keyword">super</span>.finishAfterTransition()</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>在页面A接受的方法是，需要注意的是，如果是fragment的话，是没有<code>onActivityReenter</code>方法的，不过你可以选择自定义一个接口，然后在下面的代码调用它<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityReenter</span><span class="params">(resultCode: <span class="type">Int</span>, <span class="keyword">data</span>: <span class="type">Intent</span>)</span></span> &#123;</div><div class="line">     <span class="keyword">super</span>.onActivityReenter(resultCode, <span class="keyword">data</span>)</div><div class="line">     <span class="keyword">val</span> list = supportFragmentManager.fragments</div><div class="line">     list.forEach &#123;</div><div class="line">         <span class="keyword">if</span> (it <span class="keyword">is</span> MyFragment) &#123;</div><div class="line">             it.onReenter(resultCode, <span class="keyword">data</span>)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="comment">//MyFragment中定义的方法</span></div><div class="line"> <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">onReenter</span><span class="params">(resultCode: <span class="type">Int</span>, <span class="keyword">data</span>: <span class="type">Intent</span>)</span></span> &#123;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>差不多就是这些吧，这些就能满足基本的共享元素动画了。需要注意的是，一定要设置正确的transitionName。<br>还有一个fresco的坑，如果发现回到页面A的时候共享元素消失了话，可以设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setLegacyVisibilityHandlingEnabled(true)</div></pre></td></tr></table></figure></p>
-<p>这是fresco1.4添加的关于共享u元素的bug修复。</p>
-<p>贴一个我觉得做的不错的</p>
-<ul>
-<li><a href="https://github.com/kitek/android-gallery.git" target="_blank" rel="external">https://github.com/kitek/android-gallery.git</a></li>
-<li><a href="https://github.com/ongakuer/PhotoDraweeView" target="_blank" rel="external">https://github.com/ongakuer/PhotoDraweeView</a></li>
-</ul>
-<p>对于我，因为第二页使用的是ViewPager，导致因为ViewPgaer的缓存问题每次返回的item都不对，所以我直接把transitionName设置到ViewPager上就好了，虽然这不是最佳的解决方案，但是也解决问题了。</p>
+        <p>做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。</p>
+<h1 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h1><p><code>Lifecycle</code>是Google在<a href="https://developer.android.google.cn/jetpack/" target="_blank" rel="external">Jetpack</a>中提出的，在包<a href="https://developer.android.com/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external"><code>android.arch.lifecycle</code></a>下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myFragmentActivity</span></span>(<span class="keyword">val</span> fragmentActivity: FragmentActivity) : LifecycleObserver &#123;</div><div class="line">    init &#123;</div><div class="line">     <span class="comment">//在这里注册一下</span></div><div class="line">      fragmentActivity.lifecycle.addObserver(<span class="keyword">this</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_RESUME)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_RESUME"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onPause</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_PAUSE"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_STOP)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onStop</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_STOP"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_DESTROY"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就可以很方便去管理生命周期，也可以和原来的activity的方法解耦。也可以通过LifecycleOwner来管理生命周期<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> : <span class="type">Activity</span></span>(), LifecycleOwner &#123;</div><div class="line">    lateinit <span class="keyword">var</span> mLifecycleRegistry: LifecycleRegistry</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</div><div class="line"></div><div class="line">        mLifecycleRegistry = LifecycleRegistry(<span class="keyword">this</span>)</div><div class="line">        mLifecycleRegistry.markState(Lifecycle.State.CREATED)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStart</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onStart()</div><div class="line">        mLifecycleRegistry.markState(Lifecycle.State.STARTED)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//这里得到的就是生命周期的结果</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLifecycle</span><span class="params">()</span></span>: Lifecycle = mLifecycleRegistry</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里不详细赘述里面的细节，只是记录一下使用的方法，有关细节可以查看官方文档。</p>
+<h1 id="FragmentLifecycleCallbacks"><a href="#FragmentLifecycleCallbacks" class="headerlink" title="FragmentLifecycleCallbacks"></a>FragmentLifecycleCallbacks</h1><p>如果使用的是fragment，那么这里提供另一种获取生命周期的方法，通过<code>FragmentLifecycleCallbacks</code>可以获取到fragment的生命周期回调<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">  fragment.requireFragmentManager().registerFragmentLifecycleCallbacks(<span class="keyword">object</span> : FragmentManager.FragmentLifecycleCallbacks() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentResumed</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentResumed"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentPaused</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentPaused"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentStopped</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentStopped"</span>)</div><div class="line">      <span class="comment">//fragment.requireFragmentManager().unregisterFragmentLifecycleCallbacks(this)</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentDestroyed</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentDestroyed"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>所以，通过为activity添加一个空白的fragment也是一种方法，然后fragment就可以获取到activity的生命周期了，Glide就是通过添加一个fragment来管理生命周期的。</p>
+<h1 id="ActivityLifecycleCallbacks"><a href="#ActivityLifecycleCallbacks" class="headerlink" title="ActivityLifecycleCallbacks"></a>ActivityLifecycleCallbacks</h1><p>如果要全局管理生命周期有没有什么办法呢？当然还是有的，可以设置全局的Application，然后在application里面注册监听，就可以处理所有的activity的生命周期了。记得及时释放掉。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">registerActivityLifecycleCallbacks(<span class="keyword">object</span> : Application.ActivityLifecycleCallbacks &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityPaused</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResumed</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStarted</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityDestroyed</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(activity: <span class="type">Activity</span>?, outState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStopped</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityCreated</span><span class="params">(activity: <span class="type">Activity</span>?, savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>就记录这么多的方法，然后基于上面的进行封装处理就可以了，如果你有更好的方法，也欢迎来一起讨论。</p>
 
       
     </div>
@@ -502,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/花开有时，路遇白花/" rel="next" title="花开有时，路遇白花">
-                <i class="fa fa-chevron-left"></i> 花开有时，路遇白花
+              <a href="/SharedElement/" rel="next" title="Android共享元素">
+                <i class="fa fa-chevron-left"></i> Android共享元素
               </a>
             
           </div>
@@ -511,10 +505,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Android上的生命周期监控/" rel="prev" title="Android上的生命周期监控">
-                Android上的生命周期监控 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -561,8 +551,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -628,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lifecycle"><span class="nav-number">1.</span> <span class="nav-text">Lifecycle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FragmentLifecycleCallbacks"><span class="nav-number">2.</span> <span class="nav-text">FragmentLifecycleCallbacks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ActivityLifecycleCallbacks"><span class="nav-number">3.</span> <span class="nav-text">ActivityLifecycleCallbacks</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

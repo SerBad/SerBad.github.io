@@ -348,6 +348,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android上的生命周期监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Android上的生命周期监控/" itemprop="url">Android上的生命周期监控</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T13:36:11+08:00">2018-07-23</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+             <span id="/Android上的生命周期监控/" class="leancloud_visitors" data-flag-title="Android上的生命周期监控">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>做Android开发总是避免不了要处理各种生命周期，那么有没有什么优雅的方法呢？现在我就记录几种方法。</p>
+<h1 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h1><p><code>Lifecycle</code>是Google在<a href="https://developer.android.google.cn/jetpack/" target="_blank" rel="external">Jetpack</a>中提出的，在包<a href="https://developer.android.com/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external"><code>android.arch.lifecycle</code></a>下面，如果使用的是suppor包中的SupportActivity或者FragmentActivity已经继承了Lifecycle。使用的方法如下：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myFragmentActivity</span></span>(<span class="keyword">val</span> fragmentActivity: FragmentActivity) : LifecycleObserver &#123;</div><div class="line">    init &#123;</div><div class="line">     <span class="comment">//在这里注册一下</span></div><div class="line">      fragmentActivity.lifecycle.addObserver(<span class="keyword">this</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_RESUME)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_RESUME"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onPause</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_PAUSE"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_STOP)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onStop</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_STOP"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">        Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"ON_DESTROY"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就可以很方便去管理生命周期，也可以和原来的activity的方法解耦。也可以通过LifecycleOwner来管理生命周期<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> : <span class="type">Activity</span></span>(), LifecycleOwner &#123;</div><div class="line">    lateinit <span class="keyword">var</span> mLifecycleRegistry: LifecycleRegistry</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</div><div class="line"></div><div class="line">        mLifecycleRegistry = LifecycleRegistry(<span class="keyword">this</span>)</div><div class="line">        mLifecycleRegistry.markState(Lifecycle.State.CREATED)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStart</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onStart()</div><div class="line">        mLifecycleRegistry.markState(Lifecycle.State.STARTED)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//这里得到的就是生命周期的结果</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLifecycle</span><span class="params">()</span></span>: Lifecycle = mLifecycleRegistry</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里不详细赘述里面的细节，只是记录一下使用的方法，有关细节可以查看官方文档。</p>
+<h1 id="FragmentLifecycleCallbacks"><a href="#FragmentLifecycleCallbacks" class="headerlink" title="FragmentLifecycleCallbacks"></a>FragmentLifecycleCallbacks</h1><p>如果使用的是fragment，那么这里提供另一种获取生命周期的方法，通过<code>FragmentLifecycleCallbacks</code>可以获取到fragment的生命周期回调<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">  fragment.requireFragmentManager().registerFragmentLifecycleCallbacks(<span class="keyword">object</span> : FragmentManager.FragmentLifecycleCallbacks() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentResumed</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentResumed"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentPaused</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentPaused"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentStopped</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentStopped"</span>)</div><div class="line">      <span class="comment">//fragment.requireFragmentManager().unregisterFragmentLifecycleCallbacks(this)</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFragmentDestroyed</span><span class="params">(fm: <span class="type">FragmentManager</span>, f: <span class="type">Fragment</span>)</span></span> &#123;</div><div class="line">      Timber.tag(<span class="string">"xx"</span>).i(<span class="string">"onFragmentDestroyed"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<p>所以，通过为activity添加一个空白的fragment也是一种方法，然后fragment就可以获取到activity的生命周期了，Glide就是通过添加一个fragment来管理生命周期的。</p>
+<h1 id="ActivityLifecycleCallbacks"><a href="#ActivityLifecycleCallbacks" class="headerlink" title="ActivityLifecycleCallbacks"></a>ActivityLifecycleCallbacks</h1><p>如果要全局管理生命周期有没有什么办法呢？当然还是有的，可以设置全局的Application，然后在application里面注册监听，就可以处理所有的activity的生命周期了。记得及时释放掉。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">registerActivityLifecycleCallbacks(<span class="keyword">object</span> : Application.ActivityLifecycleCallbacks &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityPaused</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResumed</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStarted</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityDestroyed</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(activity: <span class="type">Activity</span>?, outState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStopped</span><span class="params">(activity: <span class="type">Activity</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityCreated</span><span class="params">(activity: <span class="type">Activity</span>?, savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>就记录这么多的方法，然后基于上面的进行封装处理就可以了，如果你有更好的方法，也欢迎来一起讨论。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/SharedElement/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1090,166 +1230,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-02-28/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ser Bad">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ser Bad">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-02-28/" itemprop="url">一个架构师该知道的</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T15:47:41+08:00">2018-02-28</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2018-02-28/" class="leancloud_visitors" data-flag-title="一个架构师该知道的">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-02-28/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
