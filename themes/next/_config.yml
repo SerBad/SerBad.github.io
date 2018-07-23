@@ -7,7 +7,7 @@
 # And if true, all config from default NexT `_config.yml` must be copied into `next.yml`. Use if you know what you are doing.
 # Useful if you want to comment some options from NexT `_config.yml` by `next.yml` without editing default config.
 override: false
-language: zh-Hans
+language: zh-CN
 
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
@@ -635,7 +635,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in lc counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.
-  security: true
+  security: false
   betterPerformance: false
 
 # Another tool to show number of visitors to each article.
@@ -664,7 +664,7 @@ busuanzi_count:
 tencent_analytics: 65918582
 
 # Tencent MTA ID
-# tencent_mta:
+tencent_mta: 500623094
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
