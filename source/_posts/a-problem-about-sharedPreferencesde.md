@@ -1,7 +1,7 @@
 ---
 title: 关于SharedPreferences的一次问题
 date: 2016-06-02 20:50:22
-tags: android
+tags: Android
 comments: false
 ---
 SharedPreferences可以用来保存一些很简单的数据，对应的就是一个key-value。但是最近遇到一个问题就是在多进程的时候，没有办法同步保存数据。看到一个解决办法是``Context.MODE_MULTI_PROCESS`` 来进行多线程访问。在官网在介绍这个方法的时候是这样子的：

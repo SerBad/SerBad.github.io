@@ -1,7 +1,7 @@
 ---
 title: 一份有用的Android混淆指南
 date: 2017-03-16 13:05:43
-tags: android
+tags: Android
 comments: false
 ---
 做 Android开发的经常遇到需要混淆的地方，但是每次都要去找一遍也蛮麻烦的，所以在这里记录以下常用的Android混淆方式。

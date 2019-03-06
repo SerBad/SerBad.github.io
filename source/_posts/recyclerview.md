@@ -1,7 +1,7 @@
 ---
 title: RecyclerView
 date: 2016-04-20 21:13:42
-tags: android
+tags: Android
 comments: false
 ---
 最新在项目中使用了Android L出现的新控件RecyclerView，把学习的过程都贴出来，便于日后查询。

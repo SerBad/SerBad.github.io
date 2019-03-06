@@ -1,7 +1,7 @@
 ---
 title: Gson序列化
 date: 2017-03-21 01:09:43
-tags: android
+tags: Android
 comments: false
 ---
 最近项目中遇到一个问题，就是Gson解析的时候遇到一个为空的数组，这种时候如果忽略后台优雅地解决这个问题呢？答案就是——Gson 的序列化和反序列化：
