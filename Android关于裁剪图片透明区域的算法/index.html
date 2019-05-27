@@ -118,25 +118,32 @@
 
 
 
-  <meta name="description" content="2015.01 ～2015.02">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="最近项目中遇到这么一个需求，需要裁剪掉图片的透明区域。找了很久，最后确定，只能通过自己读取Bitmap的像素点来读取图片的边界来裁剪。下面记录一下过程。">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小诗-第三辑">
-<meta property="og:url" content="http://yoursite.com/第三辑/index.html">
+<meta property="og:title" content="Android关于裁剪图片透明区域的算法">
+<meta property="og:url" content="http://yoursite.com/Android关于裁剪图片透明区域的算法/index.html">
 <meta property="og:site_name" content="Ser Bad">
-<meta property="og:description" content="2015.01 ～2015.02">
+<meta property="og:description" content="最近项目中遇到这么一个需求，需要裁剪掉图片的透明区域。找了很久，最后确定，只能通过自己读取Bitmap的像素点来读取图片的边界来裁剪。下面记录一下过程。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T14:42:39.056Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-8e884a696f70b1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-cc2aeb6b5781d17d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-9c08301a7e609efd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-7aa7fbf20e14fd18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-70e1bb6ae6123328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8433-537a941a7f34266c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-27T09:02:03.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小诗-第三辑">
-<meta name="twitter:description" content="2015.01 ～2015.02">
+<meta name="twitter:title" content="Android关于裁剪图片透明区域的算法">
+<meta name="twitter:description" content="最近项目中遇到这么一个需求，需要裁剪掉图片的透明区域。找了很久，最后确定，只能通过自己读取Bitmap的像素点来读取图片的边界来裁剪。下面记录一下过程。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8433-8e884a696f70b1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/第三辑/">
+  <link rel="canonical" href="http://yoursite.com/Android关于裁剪图片透明区域的算法/">
 
 
 
@@ -146,7 +153,7 @@
   };
 </script>
 
-  <title>小诗-第三辑 | Ser Bad</title>
+  <title>Android关于裁剪图片透明区域的算法 | Ser Bad</title>
   
 
 
@@ -350,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/第三辑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android关于裁剪图片透明区域的算法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ser Bad">
@@ -367,7 +374,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">小诗-第三辑</h2>
+          <h2 class="post-title" itemprop="name headline">Android关于裁剪图片透明区域的算法</h2>
         
 
         <div class="post-meta">
@@ -379,7 +386,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T22:24:01+08:00">2019-03-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T18:49:53+08:00">2019-05-27</time>
             
 
             
@@ -389,30 +396,12 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
 
           
           
-             <span id="/第三辑/" class="leancloud_visitors" data-flag-title="小诗-第三辑">
+             <span id="/Android关于裁剪图片透明区域的算法/" class="leancloud_visitors" data-flag-title="Android关于裁剪图片透明区域的算法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -443,74 +432,12 @@
       
 
       
-        <h1 id="2015-01-～2015-02"><a href="#2015-01-～2015-02" class="headerlink" title="2015.01 ～2015.02"></a>2015.01 ～2015.02</h1><a id="more"></a>
-<blockquote>
-<h3 id="狗屁短诗-一"><a href="#狗屁短诗-一" class="headerlink" title="狗屁短诗(一)"></a>狗屁短诗(一)</h3><p>纷扬的心要走了！<br>海你要去哪儿？<br>我不知道我要去哪儿！</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-二"><a href="#狗屁短诗-二" class="headerlink" title="狗屁短诗(二)"></a>狗屁短诗(二)</h3><p>湛蓝的天，<br>翠绿的树，<br>黝黑的土地，<br>翻不完的书简，<br>哭泣的小女孩。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-三"><a href="#狗屁短诗-三" class="headerlink" title="狗屁短诗(三)"></a>狗屁短诗(三)</h3><p>太阳的烈焰炙烤着/<br>我听到有人在喊/<br>我大声呼喊“你是谁”/<br>可是/<br>什么也听不到，只有我自己的呼吸声/<br>我看到了流水，潺潺的溪水/<br>我用力跑过去，渴望汲取些许/<br>但我跑了好久都没有追到/<br>我为了追寻那心中的一团火而来/<br>对不起，我在接近你的那一刻背叛了你/</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-四"><a href="#狗屁短诗-四" class="headerlink" title="狗屁短诗(四)"></a>狗屁短诗(四)</h3><p>那是一块石头/<br>那是一行眼泪/<br>那是一块留着眼泪的石头/<br>那是我所知道的一切/<br>感冒断片记<br>头脑昏聩不识味，恶意沉沉难又难。<br>晓知天明易飞华，无奈无力不敢从。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-五"><a href="#狗屁短诗-五" class="headerlink" title="狗屁短诗(五)"></a>狗屁短诗(五)</h3><p>！</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗-六-–关闭了的门》"><a href="#《狗屁短诗-六-–关闭了的门》" class="headerlink" title="《狗屁短诗(六)–关闭了的门》"></a>《狗屁短诗(六)–关闭了的门》</h3><p>也许是我的错/<br>我把门关闭了/<br>可是为什么你看不到那扇门？/<br>–只有你轻轻触碰就可以打开的门/<br>我把门关闭，/<br>等着有一天，我看到开门人。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-七"><a href="#狗屁短诗-七" class="headerlink" title="狗屁短诗(七)"></a>狗屁短诗(七)</h3><p>我有一株花，<br>我不喜欢它。<br>我也不知道为什么，<br>它总是留在我心中。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="狗屁短诗-八"><a href="#狗屁短诗-八" class="headerlink" title="狗屁短诗(八)"></a>狗屁短诗(八)</h3><p>我问大海，什么是爱？<br>她说她不知道！<br>我问大海，什么是恨？<br>她说她不知道！<br>我抬起双眼，<br>看到浪花抚摸着一条小鱼。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗系列之番外篇-续记》"><a href="#《狗屁短诗系列之番外篇-续记》" class="headerlink" title="《狗屁短诗系列之番外篇:续记》"></a>《狗屁短诗系列之番外篇:续记》</h3><p>近来，脑子一团狗屎，曾经无数次决意不再记下任何与之相关的文字。既然选择了失忆，那就不要再想起来！</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗九》"><a href="#《狗屁短诗九》" class="headerlink" title="《狗屁短诗九》"></a>《狗屁短诗九》</h3><p>流水。安静的;<br>不想被，谁知道！<br>那一颗，跳动的心–<br>知道了，也只是流水的。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗十一》"><a href="#《狗屁短诗十一》" class="headerlink" title="《狗屁短诗十一》"></a>《狗屁短诗十一》</h3><p>眯蒙着双眼;<br>壁炉里的火快熄了;<br>黑影在变长;<br>我想要哭泣。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗十二》"><a href="#《狗屁短诗十二》" class="headerlink" title="《狗屁短诗十二》"></a>《狗屁短诗十二》</h3><p>我有一颗流淌的心;<br>焚化滴答声！<br>新鲜的列车，<br>天堂路何在？</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗之十三》"><a href="#《狗屁短诗之十三》" class="headerlink" title="《狗屁短诗之十三》"></a>《狗屁短诗之十三》</h3><p>不管再见时，<br>是否还会红了脸颊。<br>消失了的心跳:<br>也会提醒，我<br>失忆了，好久。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗之十四》"><a href="#《狗屁短诗之十四》" class="headerlink" title="《狗屁短诗之十四》"></a>《狗屁短诗之十四》</h3><p>篝火，旋转起来的我，<br>曼妙身姿;哭泣了，<br>受尽诱惑的我，<br>迷失在了，<br>一片开花的海。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗之十五》"><a href="#《狗屁短诗之十五》" class="headerlink" title="《狗屁短诗之十五》"></a>《狗屁短诗之十五》</h3><p>狗屁的国王怀念着他的前妻。<br>恶毒的小丑眈望着前排的爆米花。<br>花心的流氓思考着怡红院的姑娘。<br>端着爆米花的那个怡红院的姑娘，<br>想起了过去和国王生活的日子。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗之夜月记》"><a href="#《狗屁短诗之夜月记》" class="headerlink" title="《狗屁短诗之夜月记》"></a>《狗屁短诗之夜月记》</h3><p>夜深魂游不知处，床榻枕边人酣睡。<br>举目思月广寒宫，捣药不休难入眠。</p>
-</blockquote>
-<!---->
-<blockquote>
-<h3 id="《狗屁短诗之十六》"><a href="#《狗屁短诗之十六》" class="headerlink" title="《狗屁短诗之十六》"></a>《狗屁短诗之十六》</h3><p>耳边，喧闹的聒噪，<br>回忆里，祭奠逝去的你。<br>这不是你的错，<br>只是我，忘记了回家的路。</p>
-</blockquote>
+        <p>最近项目中遇到这么一个需求，需要裁剪掉图片的透明区域。找了很久，最后确定，只能通过自己读取Bitmap的像素点来读取图片的边界来裁剪。下面记录一下过程。<br><a id="more"></a><br>原图如下<img src="https://upload-images.jianshu.io/upload_images/8433-8e884a696f70b1fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="PorterDuffXfermode"><a href="#PorterDuffXfermode" class="headerlink" title="PorterDuffXfermode"></a>PorterDuffXfermode</h1><p>最开始想的是使用PorterDuffXfermode来处理，因为这种方式其实很快的，但是，虽然这种方式可以用来处理图片，但是无法满足获取图片边界的需求。<br>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">cutStickerBitmap</span><span class="params">(String name, Context context, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    Calendar calendar = Calendar.getInstance();</span><br><span class="line">    Bitmap bit = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">    bit.eraseColor(Color.WHITE);</span><br><span class="line">    Canvas canvas = <span class="keyword">new</span> Canvas(bit);</span><br><span class="line"></span><br><span class="line">    Paint paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    paint.setXfermode(<span class="keyword">new</span> PorterDuffXfermode(PorterDuff.Mode.DST_IN));</span><br><span class="line"></span><br><span class="line">    canvas.drawBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, paint);</span><br><span class="line">    Paint paintRect = <span class="keyword">new</span> Paint();</span><br><span class="line">    paintRect.setColor(Color.RED);</span><br><span class="line">    paintRect.setAntiAlias(<span class="keyword">true</span>);</span><br><span class="line">    paintRect.setStyle(Paint.Style.STROKE);</span><br><span class="line">    paintRect.setStrokeWidth(<span class="number">4</span>);</span><br><span class="line">    Rect rect = <span class="keyword">new</span> Rect();</span><br><span class="line">    <span class="comment">//画一个框表示边界</span></span><br><span class="line">    rect.set(<span class="number">0</span>, <span class="number">0</span>, bitmap.getWidth(), bitmap.getHeight());</span><br><span class="line">    canvas.drawRect(rect, paintRect);</span><br><span class="line">    Log.i(<span class="string">"xx"</span>, <span class="string">" 运行时间 cutStickerBitmap "</span> + (Calendar.getInstance().getTimeInMillis() - calendar.getTimeInMillis()));</span><br><span class="line">    <span class="keyword">return</span> bit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码处理的时间，可以看到时间很快，可惜不符合需求：<br><img src="https://upload-images.jianshu.io/upload_images/8433-cc2aeb6b5781d17d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>处理的结果如下： <img src="https://upload-images.jianshu.io/upload_images/8433-9c08301a7e609efd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="自己写算法读像素"><a href="#自己写算法读像素" class="headerlink" title="自己写算法读像素"></a>自己写算法读像素</h1><p>关于这个算法，其实，我写过两个版本。 自己写算法的话，需要自己评估你自己的需求和结果。一开始，为了防止图形是不连续的，我采取的思路是从图片四周来获取边界。思路如图：<br><img src="https://upload-images.jianshu.io/upload_images/8433-7aa7fbf20e14fd18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这么做的确是可以保证百分百正确的，但是这么做有一个问题，那就是因为每次得到的图片分辨率不一样，在有的时候处理一次需要10s以上，这实在是太慢了。</p>
+<p>后来仔细观察之后发现，其实不需要那么严格的，因为得到的所有的图形都是连续的，所以新的算法就是从中间开始处理的。<br> <img src="https://upload-images.jianshu.io/upload_images/8433-70e1bb6ae6123328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>沿着中线，先向右边获取边界，再沿着中线从左边获取边界，同时为了加快速度，采取的一次读两个像素的方式，如果要求严谨可以改成每次读一个像素，算法代码如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理贴纸</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">cutStickerBitmap</span><span class="params">(Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    Calendar calendar = Calendar.getInstance();</span><br><span class="line">    <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = bitmap.getWidth() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> bottom = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = bitmap.getWidth() / <span class="number">2</span>; w &lt; bitmap.getWidth(); w += <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (h = <span class="number">0</span>; h &lt; bitmap.getHeight(); h+=<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> color = bitmap.getPixel(w, h);</span><br><span class="line">            <span class="keyword">if</span> (color != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (top == <span class="number">0</span>) &#123;</span><br><span class="line">                    top = h;</span><br><span class="line">                &#125;</span><br><span class="line">                top = Math.min(top, h);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (h &gt;= bitmap.getHeight() - <span class="number">1</span>) &#123;</span><br><span class="line">            right = w;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = bitmap.getWidth() / <span class="number">2</span> - <span class="number">1</span>; w &gt;= <span class="number">0</span>; w -= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (h = <span class="number">0</span>; h &lt; bitmap.getHeight(); h+=<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> color = bitmap.getPixel(w, h);</span><br><span class="line">            <span class="keyword">if</span> (color != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (top == <span class="number">0</span>) &#123;</span><br><span class="line">                    top = h;</span><br><span class="line">                &#125;</span><br><span class="line">                top = Math.min(top, h);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (h &gt;= bitmap.getHeight() - <span class="number">1</span>) &#123;</span><br><span class="line">            left = w;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = left; w &lt;= right; w++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> h = bitmap.getHeight() - <span class="number">1</span>; h &gt;= top; h--) &#123;</span><br><span class="line">            <span class="keyword">int</span> color = bitmap.getPixel(w, h);</span><br><span class="line">            <span class="keyword">if</span> (color != <span class="number">0</span>) &#123;</span><br><span class="line">                bottom = Math.max(bottom, h);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对边界值做一次判断，保证严谨</span></span><br><span class="line">    <span class="keyword">int</span> x = (<span class="keyword">int</span>) Math.max(left  , <span class="number">0f</span>);</span><br><span class="line">    <span class="keyword">int</span> y = (<span class="keyword">int</span>) Math.max(top  , <span class="number">0f</span>);</span><br><span class="line">    <span class="keyword">int</span> w = (<span class="keyword">int</span>) Math.min(right - left  , bitmap.getWidth() - x);</span><br><span class="line">    <span class="keyword">int</span> h = (<span class="keyword">int</span>) Math.min(bottom - top  , bitmap.getHeight() - y);</span><br><span class="line">    <span class="keyword">if</span> (x + w &gt; bitmap.getWidth()) &#123;</span><br><span class="line">        x = <span class="number">0</span>;</span><br><span class="line">        w = bitmap.getWidth();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (y + h &gt; bitmap.getHeight()) &#123;</span><br><span class="line">        y = <span class="number">0</span>;</span><br><span class="line">        h = bitmap.getHeight();</span><br><span class="line">    &#125;</span><br><span class="line">    Log.i(<span class="string">"xx"</span>, <span class="string">" 运行时间 cutStickerBitmap "</span> + (Calendar.getInstance().getTimeInMillis() - calendar.getTimeInMillis()));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Bitmap.createBitmap(bitmap, x, y, w, h);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码处理的时间如下：<img src="https://upload-images.jianshu.io/upload_images/8433-537a941a7f34266c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
       
     </div>
@@ -560,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
         </div>
       
@@ -573,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android加载animated-webp的控制和Glide加载GIF/" rel="next" title="Android加载animated-webp的控制和Glide加载GIF">
-                <i class="fa fa-chevron-left"></i> Android加载animated-webp的控制和Glide加载GIF
+              <a href="/第三辑/" rel="next" title="小诗-第三辑">
+                <i class="fa fa-chevron-left"></i> 小诗-第三辑
               </a>
             
           </div>
@@ -582,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Android关于裁剪图片透明区域的算法/" rel="prev" title="Android关于裁剪图片透明区域的算法">
-                Android关于裁剪图片透明区域的算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -716,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2015-01-～2015-02"><span class="nav-number">1.</span> <span class="nav-text">2015.01 ～2015.02</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-一"><span class="nav-number">1.0.1.</span> <span class="nav-text">狗屁短诗(一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-二"><span class="nav-number">1.0.2.</span> <span class="nav-text">狗屁短诗(二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-三"><span class="nav-number">1.0.3.</span> <span class="nav-text">狗屁短诗(三)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-四"><span class="nav-number">1.0.4.</span> <span class="nav-text">狗屁短诗(四)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-五"><span class="nav-number">1.0.5.</span> <span class="nav-text">狗屁短诗(五)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗-六-–关闭了的门》"><span class="nav-number">1.0.6.</span> <span class="nav-text">《狗屁短诗(六)–关闭了的门》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-七"><span class="nav-number">1.0.7.</span> <span class="nav-text">狗屁短诗(七)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狗屁短诗-八"><span class="nav-number">1.0.8.</span> <span class="nav-text">狗屁短诗(八)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗系列之番外篇-续记》"><span class="nav-number">1.0.9.</span> <span class="nav-text">《狗屁短诗系列之番外篇:续记》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗九》"><span class="nav-number">1.0.10.</span> <span class="nav-text">《狗屁短诗九》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗十一》"><span class="nav-number">1.0.11.</span> <span class="nav-text">《狗屁短诗十一》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗十二》"><span class="nav-number">1.0.12.</span> <span class="nav-text">《狗屁短诗十二》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗之十三》"><span class="nav-number">1.0.13.</span> <span class="nav-text">《狗屁短诗之十三》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗之十四》"><span class="nav-number">1.0.14.</span> <span class="nav-text">《狗屁短诗之十四》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗之十五》"><span class="nav-number">1.0.15.</span> <span class="nav-text">《狗屁短诗之十五》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗之夜月记》"><span class="nav-number">1.0.16.</span> <span class="nav-text">《狗屁短诗之夜月记》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《狗屁短诗之十六》"><span class="nav-number">1.0.17.</span> <span class="nav-text">《狗屁短诗之十六》</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PorterDuffXfermode"><span class="nav-number">1.</span> <span class="nav-text">PorterDuffXfermode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自己写算法读像素"><span class="nav-number">2.</span> <span class="nav-text">自己写算法读像素</span></a></li></ol></div>
             
 
           </div>
