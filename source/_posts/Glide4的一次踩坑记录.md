@@ -152,8 +152,7 @@ public class GlideSelectDrawableImageViewTarget extends DrawableImageViewTarget 
 ```java
    Glide.with(context)
       .load(url)
-      .transform(new GlideSelectDrawableImageViewTarget(imageView,true))
-      .into(imageView);
+      .into(new GlideSelectDrawableImageViewTarget(imageView,true));
 ```
 
 这里需要说明的地方是：
