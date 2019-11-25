@@ -120,13 +120,8 @@ object KotlinTest {
         println("透明度百分比对应的十六进制:")
         for (i in 0..100) {
             val temp = 255 * i * 1.0f / 100.0f
-            val round = temp.roundToInt()
-            var hexString = Integer.toHexString(round)
-
-            if (hexString.length < 2) {
-                hexString = "0$hexString"
-            }
-
+            val round = temp.roundToInt() //四舍五入
+            val hexString = String.format("%02x", round)
             println(
                 "透明度: ${round.toString().padEnd(3)}  " +
                         "百分比: ${(i).toString().plus("%").padEnd(4)}  " +
