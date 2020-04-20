@@ -3,5 +3,6 @@ title: {{ title }}
 date: {{ date }}
 tags: 随笔
 comments: false
-categories: cognitive-science
+categories: 随笔
 ---
+<!--more-->
