@@ -5,7 +5,9 @@ updated:
 tags:
 comments: false
 ---
-{% fullimage /images/avatar.jpg %}
+
+{% image /images/avatar.jpg %}
+
  
 ### 说明
 上面的图片，应该有人知道的，冰火里面提利昂，是一个侏儒，受尽了歧视，为了生存和证明自己，不断地学习，是一个很有智慧的人物，拥有很多粉丝，不会那么快领便当的。
