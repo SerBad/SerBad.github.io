@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="tz-Yri7IPY7EzLsfZ82bZED-8kz7OuI1owGhkjazOdM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="一个架构师该知道的">
+<meta property="og:url" content="http://yoursite.com/2018-02-28/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-28T07:47:41.000Z">
+<meta property="article:modified_time" content="2024-03-12T07:21:11.495Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/2018-02-28/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://yoursite.com/2018-02-28/","path":"2018-02-28/","title":"一个架构师该知道的"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一个架构师该知道的 | Ser Bad</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?5b1241ad0e2e245d0fd2d053888a3fe3"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ser Bad</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/categories/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa fa-archive fa-fw"></i>随笔</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Doe"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">北戈朝天怒风吼</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SerBad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SerBad" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ser_Bad" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ser_Bad" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/2F2aMX" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;2F2aMX" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/ser_bad" title="csdn → http:&#x2F;&#x2F;blog.csdn.net&#x2F;ser_bad" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>csdn</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-02-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="北戈朝天怒风吼">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一个架构师该知道的 | Ser Bad">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一个架构师该知道的
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-28 15:47:41" itemprop="dateCreated datePublished" datetime="2018-02-28T15:47:41+08:00">2018-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。</p>
+<span id="more"></span>
+<p>一个良好的架构师需要具备那些技能，这就是一个见仁见智的问题，因为岗位的职责就是不一样的，架构师也总会遇到一些完全没有接触过的东西，这个时候就体现出架构师最大价值的时候了。即便如此，有些东西依然是一个架构师应该了解并且非常清楚的内容。现在花点儿时间把过往的内容总结一下，先写一篇总的思考，后面会陆续写出来的，希望不是一个坑。</p>
+<p>现代的技术架构技术栈，从本质上来说就是  <code>数据</code>- <code>应用</code>-<code>前端</code> 的组合，然后根据具体的业务场景和经验来选择就可以了。</p>
+<p>#数据端<br>数据端，简单来说就是存储数据的，也就是数据库，当然不仅限于数据库，还可以使用其他的东西来存储数据，比如可以使用文件、内存等存放数据，但是如果考虑高效读取或者永久化存储数据，选择一个合适的数据库就显得很重要了。现在常用的数据库主要有两类，一类是关系型数据库，比如mysql、oracle、sql server等常见的数据库；一类是非关系型数据库（即nosql），比如mongodb、redis、cassandra等数据库。具体选择那种数据库就需要根据具体的业务场景来分析处理，每一种数据库都有其适合的应用场景。如果是业务刚刚开始的情况下，一般都是直接选择关系型数据库，因为从关系型数据库转到nosql比从nosql转到关系型数据库相对容易的多。</p>
+<p>#应用<br>应用，一般都是代指后端应用，完成数据的读取和处理，接受和反馈给前端处理过的数据内容，当然不一定非要有后端应用，在有些场景下前端也可以处理数据。这是一个技术喷薄的时代，现在的后端应用有很多，比如Go、Java、node、PHP、Python等等，目前，主要的使用场景还是偏Java，其他的都只是了解，后面会单独抽一篇文章来详细介绍这个。综合来说，不管是设计高并发高负载的系统来说，瓶颈其实并不仅仅在后端应用上，而在于后端的整体架构上，这个才是真正限制的地方。后端应用因为选择多，所以在考虑的时候就会考虑很多，比如团队的主要主要技术语言是什么，该语言的社区支持等等，比如你的团队主要的技术能力是Java，你就不可能选择PHP。</p>
+<p>#前端<br>前端负责的是数据的采集和展示，包括web端、Android、iOS等等，虽然我知道还有其他的端，但是我只接触过上面的三种，目前我的技术栈也就仅限于上面的三种。随着无线应用的发展，前端在过去的时间里同样经历了蓬勃，比如web端的Vue、React、Angular，现在的web已经不再仅仅局限于简单地html了，现在的web开发也不再仅仅局限于展示在pc端了。混合开发、Weex、React Native、hybrid，针对移动端的发展也有很多，但是原生应用依然是最佳的选择，这是无可置疑的。</p>
+<p>#架构<br>上面只是说了，关于各种关于技术栈最基础的东西。现在说说如何把上面提到的东西整合起来的架构方法，这就是一个架构师该做的事情，上面的技术栈选好之后，就可以进行开发，但是这三者之间如何配合呢？当设计好数据库表时，对于Java而言，可选的数据库连接池就有很多，目前最高效的应该是HikariCP，目前Spring boot2.0就默认集成了HikariCP，其实对于整体架构而言，整个系统最大的限制其实是在对于数据库的增删改查上，增加CPU、内存，创建数据库集群等等都是增加数据库性能的办法。</p>
+<p>然后后端应用和前端配合之间，现在更多的使用Restful风格来设计API的，使用的SOA、SOAP、RPC等等还有很多，除了restful之外，与我而言都是需要增长知识点的东西。</p>
+<p>#运维<br>高可用，易拓展，是一个系统有着良好发展以及可维护性的很重要的一点。对于一个不稳定的东西，是没有办法去使用的，持续集成和持续交付的设计，就关乎一个系统能够有多稳定的运行下去。</p>
+<p>上面其实说了很多，但都是一些很基础的内容，也是自己的一点儿思考，当然也还有很多不足的地方。虽然，我现在主要想往Java架构的能力上走，但是需要学习的东西依然还有很多，后面会一一补上来的。以及，最近自己的阅读计划《知识的错觉》、《数据的本质：无人不是分析师》、《靠谱》，不得不感慨，时间总是那么少。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/WeChatPay.png" alt="John Doe 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="John Doe 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018-02-27/" rel="prev" title="一个小故事">
+                  <i class="fa fa-angle-left"></i> 一个小故事
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%9B%B8%E9%81%87/" rel="next" title="相遇">
+                  相遇 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">143k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">8:41</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/cdn-hub/canvas-ribbon@1.0/js/canvas-ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="tz-Yri7IPY7EzLsfZ82bZED-8kz7OuI1owGhkjazOdM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="首先吐槽一下，微信支付的文档和微信提供的demo实在是惨不忍睹，折腾了好久才终于搞定了，如果还是有问题，请仔细检查请求的参数是否正确，一般都是漏掉了某个参数的名称之类的。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Android微信支付踩坑全记录">
+<meta property="og:url" content="http://yoursite.com/wechatpay/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="首先吐槽一下，微信支付的文档和微信提供的demo实在是惨不忍睹，折腾了好久才终于搞定了，如果还是有问题，请仔细检查请求的参数是否正确，一般都是漏掉了某个参数的名称之类的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20170330180057671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="article:published_time" content="2017-04-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-12T07:21:11.500Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170330180057671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+<link rel="canonical" href="http://yoursite.com/wechatpay/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://yoursite.com/wechatpay/","path":"wechatpay/","title":"Android微信支付踩坑全记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android微信支付踩坑全记录 | Ser Bad</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?5b1241ad0e2e245d0fd2d053888a3fe3"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ser Bad</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/categories/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa fa-archive fa-fw"></i>随笔</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E8%8E%B7%E5%8F%96%E5%BA%94%E7%94%A8%E7%9A%84MD5%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">1. 首先第一步，获取应用的MD5签名信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%94%B3%E8%AF%B7%E8%BF%87%E7%A8%8B%E5%B0%B1%E4%B8%8D%E6%8F%90%E4%BA%86%EF%BC%8C%E5%8D%83%E4%B8%87%E6%B3%A8%E6%84%8F%EF%BC%8C%E5%BA%94%E7%94%A8%E5%8C%85%E5%90%8D%E5%92%8C%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF%E4%B8%80%E5%AE%9A%E8%A6%81%E5%A1%AB%E5%AF%B9%EF%BC%8C%E4%B8%80%E5%BC%80%E5%A7%8B%E6%88%91%E7%9A%84%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF%E5%BC%84%E9%94%99%E4%BA%86%EF%BC%8C%E6%8A%98%E8%85%BE%E4%BA%86%E5%A5%BD%E4%B9%85%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">2.  申请过程就不提了，千万注意，应用包名和签名信息一定要填对，一开始我的签名信息弄错了，折腾了好久。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%94%B3%E8%AF%B7%E5%A5%BD%E4%BA%86%E4%B9%8B%E5%90%8E%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E6%8E%A5%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">3. 申请好了之后，现在开始接入</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Doe"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">北戈朝天怒风吼</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SerBad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SerBad" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ser_Bad" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ser_Bad" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/2F2aMX" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;2F2aMX" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/ser_bad" title="csdn → http:&#x2F;&#x2F;blog.csdn.net&#x2F;ser_bad" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>csdn</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/wechatpay/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="北戈朝天怒风吼">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android微信支付踩坑全记录 | Ser Bad">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android微信支付踩坑全记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-05T00:00:00+08:00">2017-04-05</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>首先吐槽一下，微信支付的文档和微信提供的demo实在是惨不忍睹，折腾了好久才终于搞定了，如果还是有问题，请仔细检查请求的参数是否正确，一般都是漏掉了某个参数的名称之类的。</p>
+<span id="more"></span>
+
+<h3 id="1-首先第一步，获取应用的MD5签名信息"><a href="#1-首先第一步，获取应用的MD5签名信息" class="headerlink" title="1. 首先第一步，获取应用的MD5签名信息"></a>1. 首先第一步，获取应用的MD5签名信息</h3><p><img src="http://img.blog.csdn.net/20170330180057671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>如果你没有配置keytool的环境，那么也可以直接使用 <a href="https://res.wx.qq.com/open/zh_CN/htmledition/res/dev/download/sdk/Gen_Signature_Android2.apk">微信提供的获取包签名的信息</a></p>
+<h3 id="2-申请过程就不提了，千万注意，应用包名和签名信息一定要填对，一开始我的签名信息弄错了，折腾了好久。"><a href="#2-申请过程就不提了，千万注意，应用包名和签名信息一定要填对，一开始我的签名信息弄错了，折腾了好久。" class="headerlink" title="2.  申请过程就不提了，千万注意，应用包名和签名信息一定要填对，一开始我的签名信息弄错了，折腾了好久。"></a>2.  申请过程就不提了，千万注意，应用包名和签名信息一定要填对，一开始我的签名信息弄错了，折腾了好久。</h3><h3 id="3-申请好了之后，现在开始接入"><a href="#3-申请好了之后，现在开始接入" class="headerlink" title="3. 申请好了之后，现在开始接入"></a>3. 申请好了之后，现在开始接入</h3><ul>
+<li><p><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419319167&token=&lang=zh_CN">首先在gradle中导入</a>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">   compile &#x27;com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>注册APPID</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> IWXAPI msgApi = WXAPIFactory.createWXAPI(context, <span class="keyword">null</span>);</span><br><span class="line"><span class="comment">// 将该app注册到微信</span></span><br><span class="line">msgApi.registerApp(<span class="string">&quot;wxd930ea5d5a258f4f&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1">统一下单</a>，目的是获取微信返回给我们的<code>prepay_id</code></p>
+</li>
+<li><p>URL地址：<a href="https://api.mch.weixin.qq.com/pay/unifiedorder">https://api.mch.weixin.qq.com/pay/unifiedorder</a></p>
+</li>
+<li><p>需要注意的是，该URL需要用post的方式发起请求</p>
+</li>
+<li><p>在<a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=4_3">签名</a>的时候，参数名要按照ASCII码从小到大排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">getOderXml</span><span class="params">()</span> &#123;</span><br><span class="line">       Map&lt;String, String&gt; oderMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       oderMap.put(<span class="string">&quot;appid&quot;</span>, appid); <span class="comment">//</span></span><br><span class="line">       oderMap.put(<span class="string">&quot;mch_id&quot;</span>, mch_id);<span class="comment">//</span></span><br><span class="line">       oderMap.put(<span class="string">&quot;device_info&quot;</span>, device_info);<span class="comment">//-</span></span><br><span class="line">       oderMap.put(<span class="string">&quot;nonce_str&quot;</span>, nonce_str);<span class="comment">//</span></span><br><span class="line">       oderMap.put(<span class="string">&quot;trade_type&quot;</span>, trade_type);</span><br><span class="line">       oderMap.put(<span class="string">&quot;body&quot;</span>, body);</span><br><span class="line">       oderMap.put(<span class="string">&quot;detail&quot;</span>, detail);</span><br><span class="line">       oderMap.put(<span class="string">&quot;out_trade_no&quot;</span>, out_trade_no);</span><br><span class="line">       oderMap.put(<span class="string">&quot;total_fee&quot;</span>, total_fee);</span><br><span class="line">       oderMap.put(<span class="string">&quot;spbill_create_ip&quot;</span>, spbill_create_ip);</span><br><span class="line">       oderMap.put(<span class="string">&quot;time_start&quot;</span>, time_start);</span><br><span class="line">       oderMap.put(<span class="string">&quot;notify_url&quot;</span>, notify_url);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//拼接字符串加上key值，然后对sign进行md5解密，之后再转成大写</span></span><br><span class="line">       <span class="comment">//将集合M内非空参数值的参数按照参数名ASCII码从小到大排序</span></span><br><span class="line">       <span class="type">StringBuilder</span> <span class="variable">sign</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">       TreeSet&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;String&gt;() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(String lhs, String rhs)</span> &#123;</span><br><span class="line">               <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> rhs.compareTo(lhs);</span><br><span class="line">               <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">               &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   <span class="keyword">return</span> i;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       set.addAll(oderMap.keySet());</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (String str : set) &#123;</span><br><span class="line">           sign.append(str).append(<span class="string">&quot;=&quot;</span>).append(oderMap.get(str)).append(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       sign.append(<span class="string">&quot;key&quot;</span>).append(<span class="string">&quot;=&quot;</span>).append(WechatUtil.KEY);</span><br><span class="line">       oderMap.put(<span class="string">&quot;sign&quot;</span>, StringUtil.md5(sign.toString()).toUpperCase());</span><br><span class="line"></span><br><span class="line">       <span class="comment">//拼接成xml格式的字符串</span></span><br><span class="line">       <span class="type">StringBuilder</span> <span class="variable">stringBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">       stringBuilder.append(<span class="string">&quot;&lt;xml&gt;&quot;</span>);</span><br><span class="line">       set.clear();</span><br><span class="line">       set.addAll(oderMap.keySet());</span><br><span class="line">       <span class="keyword">for</span> (String s : set) &#123;</span><br><span class="line">           stringBuilder.append(<span class="string">&quot;&lt;&quot;</span>).append(s).append(<span class="string">&quot;&gt;&quot;</span>);</span><br><span class="line">           stringBuilder.append(oderMap.get(s));</span><br><span class="line">           stringBuilder.append(<span class="string">&quot;&lt;/&quot;</span>).append(s).append(<span class="string">&quot;&gt;&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       stringBuilder.append(<span class="string">&quot;&lt;/xml&gt;&quot;</span>);</span><br><span class="line">       <span class="keyword">return</span> stringBuilder.toString();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理微信返回的xml数据</span></span><br><span class="line"><span class="keyword">public</span> OderResult <span class="title function_">xmlToResult</span><span class="params">(String xml)</span> &#123;</span><br><span class="line">       <span class="type">XmlPullParser</span> <span class="variable">pullParser</span> <span class="operator">=</span> Xml.newPullParser();</span><br><span class="line">       <span class="type">InputStream</span> <span class="variable">ins</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(xml.getBytes());</span><br><span class="line">       <span class="type">OderResult</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OderResult</span>();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           pullParser.setInput(ins, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">           <span class="type">int</span> <span class="variable">eventType</span> <span class="operator">=</span> pullParser.getEventType();</span><br><span class="line">           <span class="keyword">while</span> (XmlPullParser.END_DOCUMENT != eventType) &#123;</span><br><span class="line">               <span class="keyword">switch</span> (eventType) &#123;</span><br><span class="line">                   <span class="keyword">case</span> XmlPullParser.START_TAG:</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;return_code&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setReturn_code(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;return_msg&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setReturn_msg(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;appid&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setAppid(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;mch_id&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setMch_id(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;device_info&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setDevice_info(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;nonce_str&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setNonce_str(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;sign&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setSign(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;prepay_id&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setPrepay_id(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;trade_type&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setTrade_type(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (<span class="string">&quot;result_code&quot;</span>.equals(pullParser.getName())) &#123;</span><br><span class="line">                           result.setResult_code(pullParser.nextText());</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   <span class="keyword">case</span> XmlPullParser.END_TAG:</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   <span class="keyword">default</span>:</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               eventType = pullParser.next();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (XmlPullParserException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//随机字符串，不长于32位</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">getRandom</span><span class="params">()</span> &#123;</span><br><span class="line">       <span class="type">SimpleDateFormat</span> <span class="variable">format</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyMMddHHmmss&quot;</span>, Locale.getDefault());</span><br><span class="line">       <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">       <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> format.format(date);</span><br><span class="line">       <span class="type">Random</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">       key = key + r.nextLong();</span><br><span class="line">       key = StringUtil.md5(key);</span><br><span class="line">       <span class="keyword">return</span> key;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><a href="https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12">调起支付</a>，签名的办法同上面的处理就好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IWXAPI api;</span><br><span class="line"><span class="type">PayReq</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PayReq</span>();</span><br><span class="line">request.appId = <span class="string">&quot;wxd930ea5d5a258f4f&quot;</span>;</span><br><span class="line">request.partnerId = <span class="string">&quot;1900000109&quot;</span>;</span><br><span class="line">request.prepayId= <span class="string">&quot;1101000000140415649af9fc314aa427&quot;</span>,;</span><br><span class="line">request.packageValue = <span class="string">&quot;Sign=WXPay&quot;</span>;</span><br><span class="line">request.nonceStr= <span class="string">&quot;1101000000140429eb40476f8896f4c9&quot;</span>;</span><br><span class="line">request.timeStamp= <span class="string">&quot;1398746574&quot;</span>;</span><br><span class="line">request.sign= <span class="string">&quot;7FFECB600D7157C5AA49810D2D8F28BC2811827B&quot;</span>;</span><br><span class="line">api.sendReq(request);</span><br></pre></td></tr></table></figure></li>
+<li><p>支付结果回调，实现一个<code>.wxapi.WXPayEntryActivity</code>(包名或类名不一致会造成无法回调)。如果不需要显示这个，直接finish就好了。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:name</span>=<span class="string">&quot;.wxapi.WXPayEntryActivity&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WXPayEntryActivity</span> <span class="keyword">extends</span> <span class="title class_">Activity</span> <span class="keyword">implements</span> <span class="title class_">IWXAPIEventHandler</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> IWXAPI api;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        api = WXAPIFactory.createWXAPI(<span class="built_in">this</span>, WechatUtil.APPID, <span class="literal">false</span>);</span><br><span class="line">        api.handleIntent(getIntent(), <span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReq</span><span class="params">(BaseReq baseReq)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onNewIntent</span><span class="params">(Intent intent)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onNewIntent(intent);</span><br><span class="line">        setIntent(intent);</span><br><span class="line">        api.handleIntent(intent, <span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResp</span><span class="params">(BaseResp baseResp)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) &#123;</span><br><span class="line">            <span class="keyword">if</span> (baseResp.errCode == BaseResp.ErrCode.ERR_COMM) &#123;</span><br><span class="line">                showToast(<span class="string">&quot;微信支付失败&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (baseResp.errCode == BaseResp.ErrCode.ERR_USER_CANCEL) &#123;</span><br><span class="line">                showToast(<span class="string">&quot;用户取消&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (baseResp.errCode == BaseResp.ErrCode.ERR_OK) &#123;</span><br><span class="line">                showToast(<span class="string">&quot;微信支付成功&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>如果返回的是失败，请再仔细检查调起支付的参数是否正确，进行sign签名的参数是否正确，如果还是不行，请再检查一遍，微信支付的错误信息太少了，之后成功和失败，如果统一下单成功了的话，那么就是一定是你们调起支付的参数错误，请一定要的仔细检查，重要的事重复三遍。</p>
+</li>
+<li><p>如果是统一下单的时候有问题，请确认后台返回给你的订单号是否是唯一的，参数是否正确，sign的时候时候按照要求签名，微信平台填的是否是MD5签名，发起请求的方式是否为post，是否传送的是XML数据，如果是使用Retrofit发起请求，可以这样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Retrofit</span>.Builder()</span><br><span class="line">             .baseUrl(<span class="string">&quot;https://api.mch.weixin.qq.com/pay/&quot;</span>)</span><br><span class="line">             .addConverterFactory(StringConverterFactory.create())</span><br><span class="line">             .build()</span><br><span class="line">             .create(API.class)</span><br><span class="line">             .oder(RequestBody.create(MediaType.parse(<span class="string">&quot;text/plain&quot;</span>), oder)).enqueue(<span class="keyword">new</span> <span class="title class_">Callback</span>&lt;String&gt;() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onResponse</span><span class="params">(Call&lt;String&gt; call, Response&lt;String&gt; response)</span> &#123;</span><br><span class="line">             <span class="keyword">if</span> (response.body() != <span class="literal">null</span>) &#123;</span><br><span class="line">                 <span class="type">OderResult</span> <span class="variable">result</span> <span class="operator">=</span> xmlToResult(response.body());</span><br><span class="line">                 <span class="keyword">if</span> (result.getReturn_code().equals(<span class="string">&quot;SUCCESS&quot;</span>)) &#123;</span><br><span class="line">                     <span class="keyword">if</span> (result.getResult_code().equals(<span class="string">&quot;SUCCESS&quot;</span>)) &#123;</span><br><span class="line"></span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onFailure</span><span class="params">(Call&lt;String&gt; call, Throwable t)</span> &#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">API</span> &#123;</span><br><span class="line">        <span class="meta">@POST(&quot;unifiedorder&quot;)</span></span><br><span class="line">        Call&lt;String&gt; <span class="title function_">oder</span><span class="params">(<span class="meta">@Body</span> RequestBody oder)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/WeChatPay.png" alt="John Doe 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="John Doe 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/gson-typeadapter/" rel="prev" title="Gson序列化">
+                  <i class="fa fa-angle-left"></i> Gson序列化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Thinking3/" rel="next" title="思考篇：3">
+                  思考篇：3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">143k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">8:41</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/cdn-hub/canvas-ribbon@1.0/js/canvas-ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
