@@ -11,4 +11,4 @@ hexo 新建一篇草稿的方式 ``hexo new draft blogname`` <br/>
 
 # 发布命令
 1. 安装nvm用于管理node，现在node版本很多，使用nvm可以更加方便的管理不同的node
-2. 
+2. 检查hexo-next的主题是的最新配置方法
