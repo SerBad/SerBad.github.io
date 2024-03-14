@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="tz-Yri7IPY7EzLsfZ82bZED-8kz7OuI1owGhkjazOdM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="生产aab格式的文件后，为了上传到google play还需要签名的，还有从生成aab到生成可以安装用的apk要花蛮多步骤的。所以，这里用Python做下自动化简化下步骤">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用python为aab签名和生成apk">
+<meta property="og:url" content="http://yoursite.com/%E4%BD%BF%E7%94%A8python%E4%B8%BAaab%E7%AD%BE%E5%90%8D%E5%92%8C%E7%94%9F%E6%88%90apk/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="生产aab格式的文件后，为了上传到google play还需要签名的，还有从生成aab到生成可以安装用的apk要花蛮多步骤的。所以，这里用Python做下自动化简化下步骤">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-06T07:06:38.000Z">
+<meta property="article:modified_time" content="2024-03-14T07:07:16.203Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/%E4%BD%BF%E7%94%A8python%E4%B8%BAaab%E7%AD%BE%E5%90%8D%E5%92%8C%E7%94%9F%E6%88%90apk/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://yoursite.com/%E4%BD%BF%E7%94%A8python%E4%B8%BAaab%E7%AD%BE%E5%90%8D%E5%92%8C%E7%94%9F%E6%88%90apk/","path":"使用python为aab签名和生成apk/","title":"使用python为aab签名和生成apk"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用python为aab签名和生成apk | Ser Bad</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?5b1241ad0e2e245d0fd2d053888a3fe3"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ser Bad</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/categories/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa fa-archive fa-fw"></i>随笔</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">git子模块</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Doe"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">北戈朝天怒风吼</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SerBad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SerBad" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ser_Bad" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ser_Bad" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/2F2aMX" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;2F2aMX" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/ser_bad" title="csdn → http:&#x2F;&#x2F;blog.csdn.net&#x2F;ser_bad" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>csdn</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E4%BD%BF%E7%94%A8python%E4%B8%BAaab%E7%AD%BE%E5%90%8D%E5%92%8C%E7%94%9F%E6%88%90apk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="北戈朝天怒风吼">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用python为aab签名和生成apk | Ser Bad">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用python为aab签名和生成apk
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-06 15:06:38" itemprop="dateCreated datePublished" datetime="2022-07-06T15:06:38+08:00">2022-07-06</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>554</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>生产aab格式的文件后，为了上传到google play还需要签名的，还有从生成aab到生成可以安装用的apk要花蛮多步骤的。<br>所以，这里用Python做下自动化简化下步骤</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BuildOptions</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.parser = argparse.ArgumentParser(description=<span class="string">&quot;自动打包文件&quot;</span>)</span><br><span class="line">        self.parser.add_argument(<span class="string">&quot;--path&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&quot;aab的路径&quot;</span>)</span><br><span class="line">        self.parser.add_argument(<span class="string">&quot;--password&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&quot;你自己的密码&quot;</span>)</span><br><span class="line">        self.parser.add_argument(<span class="string">&quot;--jks_path&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, required=<span class="literal">True</span>, <span class="built_in">help</span>=<span class="string">&quot;你自己jks的地址&quot;</span>)</span><br><span class="line">        self.parser.add_argument(<span class="string">&quot;--alias&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&quot;release&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;你自己jks的地址&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.parser.parse_args()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用来执行jar包的</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query_by_java_jar</span>(<span class="params">jar_path, param</span>):</span><br><span class="line">    execute = <span class="string">&quot;java -jar &#123;&#125; &#123;&#125;&quot;</span>.<span class="built_in">format</span>(jar_path, param)</span><br><span class="line">    <span class="built_in">print</span>(execute)</span><br><span class="line">    output = subprocess.Popen(execute, shell=<span class="literal">True</span>, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</span><br><span class="line">    res = output.stdout.readlines()</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用来执行jarsigner命令的</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">query_by_jarsigner</span>(<span class="params">param</span>):</span><br><span class="line">    <span class="comment"># jarsigner 是来自于java的，确保自己本地的java环境正确即可</span></span><br><span class="line">    execute = <span class="string">&quot;jarsigner &#123;&#125;&quot;</span>.<span class="built_in">format</span>(param)</span><br><span class="line">    <span class="built_in">print</span>(execute)</span><br><span class="line">    <span class="comment"># 这个是为了自动输入密码</span></span><br><span class="line">    echo = subprocess.Popen([<span class="string">&#x27;echo&#x27;</span>, password], stdout=subprocess.PIPE)</span><br><span class="line">    output = subprocess.Popen(execute, shell=<span class="literal">True</span>, stdout=subprocess.PIPE, stdin=echo.stdout, stderr=subprocess.STDOUT)</span><br><span class="line">    res = output.stdout.readlines()</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = BuildOptions()</span><br><span class="line">    args = parser.parse()</span><br><span class="line">    <span class="comment"># 替换自己的jks地址</span></span><br><span class="line">    jks_path = args.jks_path</span><br><span class="line">    <span class="comment"># 替换自己的密码</span></span><br><span class="line">    password = args.password</span><br><span class="line"></span><br><span class="line">    aab_path = args.path</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aab_path&#x27;</span>, aab_path)</span><br><span class="line">    dir_name = os.path.dirname(aab_path)</span><br><span class="line"></span><br><span class="line">    apks_path = os.path.basename(aab_path).replace(<span class="string">&#x27;.aab&#x27;</span>, <span class="string">&#x27;.apks&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    query_by_jarsigner(</span><br><span class="line">        <span class="string">&#x27;-verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore &#x27;</span> + jks_path + <span class="string">&#x27; &#x27;</span> + aab_path + <span class="string">&#x27; release&#x27;</span>)</span><br><span class="line">    query_by_java_jar(<span class="string">&#x27;./bundletool-all-1.9.1.jar&#x27;</span>,</span><br><span class="line">                      <span class="string">&#x27;build-apks --bundle=&#x27;</span> + aab_path + <span class="string">&#x27; --output=&#x27;</span> + apks_path + <span class="string">&#x27; --mode=universal --ks=&#x27;</span> + jks_path + <span class="string">&#x27; --ks-pass=pass:&#x27;</span> + password + <span class="string">&#x27; --ks-key-alias=&#x27;</span> + args.alias + <span class="string">&#x27; --key-pass=pass:&#x27;</span> + password)</span><br><span class="line">    zip_path = apks_path.replace(<span class="string">&#x27;.apks&#x27;</span>, <span class="string">&#x27;.zip&#x27;</span>)</span><br><span class="line">    os.renames(apks_path, zip_path)</span><br><span class="line">    zFile = zipfile.ZipFile(zip_path, <span class="string">&quot;r&quot;</span>)</span><br><span class="line">    zip_apk_path = dir_name + os.sep + <span class="string">&#x27;apk&#x27;</span></span><br><span class="line">    os.remove(zip_path)</span><br><span class="line">    <span class="keyword">if</span> os.path.exists(zip_apk_path):</span><br><span class="line">        shutil.rmtree(zip_apk_path)</span><br><span class="line">    <span class="keyword">for</span> fileM <span class="keyword">in</span> zFile.namelist():</span><br><span class="line">        zFile.extract(fileM, zip_apk_path)</span><br><span class="line"></span><br><span class="line">    rename = zip_apk_path + os.sep + time.strftime(<span class="string">&quot;%Y_%m_%d_%H_%M_%S&quot;</span>, time.localtime()) + <span class="string">&#x27;_&#x27;</span> + apks_path.replace(</span><br><span class="line">        <span class="string">&#x27;.apks&#x27;</span>, <span class="string">&#x27;.apk&#x27;</span>)</span><br><span class="line">    os.renames(zip_apk_path + <span class="string">&#x27;/universal.apk&#x27;</span>, rename)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;output apk&quot;</span>, rename)</span><br><span class="line">    zFile.close()</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>bundletool-all-1.9.1.jar</code>是来自于<a href="https://github.com/google/bundletool/releases%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%9B%BF%E6%8D%A2%E6%88%90%E4%BD%A0%E8%87%AA%E5%B7%B1%E9%9C%80%E8%A6%81%E7%9A%84jar">https://github.com/google/bundletool/releases，可以替换成你自己需要的jar</a></p>
+<p>使用方法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build.py --path &#x27;abb file path&#x27; --jks_path &#x27;jks file path&#x27; --password &#x27;your jks password&#x27; --alias &#x27;your jks alias&#x27;</span><br></pre></td></tr></table></figure>
+<p>或者，在Android项目中的<code>build.gradle</code>，新建一个task，可以替换成自己需要的文件目录</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> buildAAB(type: Exec) &#123;</span><br><span class="line">    commandLine <span class="string">&#x27;python3&#x27;</span>, <span class="string">&#x27;../build.py&#x27;</span>, <span class="string">&#x27;--path&#x27;</span>, <span class="string">&quot;$buildDir/outputs/bundle/*.aab&quot;</span>, <span class="string">&#x27;--jks_path&#x27;</span>, <span class="string">&#x27;jks file path&#x27;</span>, <span class="string">&#x27;--password&#x27;</span>, <span class="string">&#x27;your jks password&#x27;</span>, <span class="string">&#x27; --alias&#x27;</span>, <span class="string">&#x27;your jks alias&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后使用下面的命令就可以上传了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew buildAAB</span><br></pre></td></tr></table></figure>
+<p>本项目地址存放在，<a href="https://github.com/SerBad/RunBuildAAB.git">https://github.com/SerBad/RunBuildAAB.git</a></p>
+<h1 id="git子模块"><a href="#git子模块" class="headerlink" title="git子模块"></a>git子模块</h1><p>可以使用git的submodule方法来把其他git的子模块添加到项目里面去 使用方法是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/SerBad/RunBuildAAB.git</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/WeChatPay.png" alt="John Doe 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="John Doe 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E8%B6%85%E5%BF%AB%E9%80%9F%E7%9A%842021%E5%B9%B4/" rel="prev" title="超快速的2021年">
+                  <i class="fa fa-angle-left"></i> 超快速的2021年
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">148k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">8:59</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/cdn-hub/canvas-ribbon@1.0/js/canvas-ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

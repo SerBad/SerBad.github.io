@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="tz-Yri7IPY7EzLsfZ82bZED-8kz7OuI1owGhkjazOdM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="不常用，所以给自己记一下，做二进制计算的时候很好用。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Java的左移(&lt;&lt;)，右移(&gt;&gt;)，无符号右移(&gt;&gt;&gt;)，或与非(&amp;|^~)">
+<meta property="og:url" content="http://yoursite.com/Java%E7%9A%84%E5%B7%A6%E7%A7%BB/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="不常用，所以给自己记一下，做二进制计算的时候很好用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-13T07:01:48.000Z">
+<meta property="article:modified_time" content="2024-03-14T07:04:50.127Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/Java%E7%9A%84%E5%B7%A6%E7%A7%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://yoursite.com/Java%E7%9A%84%E5%B7%A6%E7%A7%BB/","path":"Java的左移/","title":"Java的左移(\u003c\u003c)，右移(>>)，无符号右移(>>>)，或与非(&|^~)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java的左移(<<)，右移(>>)，无符号右移(>>>)，或与非(&|^~) | Ser Bad</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?5b1241ad0e2e245d0fd2d053888a3fe3"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ser Bad</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/categories/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa fa-archive fa-fw"></i>随笔</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Doe"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">北戈朝天怒风吼</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SerBad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SerBad" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ser_Bad" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ser_Bad" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/2F2aMX" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;2F2aMX" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/ser_bad" title="csdn → http:&#x2F;&#x2F;blog.csdn.net&#x2F;ser_bad" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>csdn</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Java%E7%9A%84%E5%B7%A6%E7%A7%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="北戈朝天怒风吼">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java的左移(<<)，右移(>>)，无符号右移(>>>)，或与非(&|^~) | Ser Bad">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java的左移(<<)，右移(>>)，无符号右移(>>>)，或与非(&|^~)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-13 15:01:48" itemprop="dateCreated datePublished" datetime="2021-11-13T15:01:48+08:00">2021-11-13</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>378</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>不常用，所以给自己记一下，做二进制计算的时候很好用。</p>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &lt;&lt; 左移运算符，num &lt;&lt; 1,相当于num乘以2</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//左移： 10 &lt;&lt; 1 = 1010 变成 20</span></span><br><span class="line">        System.out.println(<span class="string">&quot;左移： 10 &lt;&lt; 1 = &quot;</span> + Integer.toBinaryString(<span class="number">10</span>) + <span class="string">&quot; 变成 &quot;</span> + (<span class="number">10</span> &lt;&lt; <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//左移： 1 &lt;&lt; 10 = 1 变成 1024</span></span><br><span class="line">        System.out.println(<span class="string">&quot;左移： 1 &lt;&lt; 10 = &quot;</span> + Integer.toBinaryString(<span class="number">1</span>) + <span class="string">&quot; 变成 &quot;</span> + (<span class="number">1</span> &lt;&lt; <span class="number">10</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &gt;&gt; 右移运算符，num &gt;&gt; 1,相当于num除以2</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//右移： -4 &gt;&gt; 2 = 11111111111111111111111111111100 变成 -1</span></span><br><span class="line">        System.out.println(<span class="string">&quot;右移： -4 &gt;&gt; 2 = &quot;</span> + Integer.toBinaryString(-<span class="number">4</span>) + <span class="string">&quot; 变成 &quot;</span> + (-<span class="number">4</span> &gt;&gt; <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右移： 8 &gt;&gt; 2 = 1000 变成 2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;右移： 8 &gt;&gt; 2 = &quot;</span> + Integer.toBinaryString(<span class="number">8</span>) + <span class="string">&quot; 变成 &quot;</span> + (<span class="number">8</span> &gt;&gt; <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &gt;&gt;&gt; 无符号右移，忽略符号位，空位都以0补齐</span></span><br><span class="line"><span class="comment">         * 当为正整数时是和右移结果一样的，但是为负数时，结果就会不一样了</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//无符号右移： -4 &gt;&gt;&gt; 2 = 11111111111111111111111111111100 变成 1073741823</span></span><br><span class="line">        System.out.println(<span class="string">&quot;无符号右移： -4 &gt;&gt;&gt; 2 = &quot;</span> + Integer.toBinaryString(-<span class="number">4</span>) + <span class="string">&quot; 变成 &quot;</span> + (-<span class="number">4</span> &gt;&gt;&gt; <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//无符号右移： 8 &gt;&gt;&gt; 2 = 1000 变成 2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;无符号右移： 8 &gt;&gt;&gt; 2 = &quot;</span> + Integer.toBinaryString(<span class="number">8</span>) + <span class="string">&quot; 变成 &quot;</span> + (<span class="number">8</span> &gt;&gt;&gt; <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;————————————————————————&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;————————————————————————&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//101</span></span><br><span class="line">        System.out.println(Integer.toBinaryString(<span class="number">5</span>));</span><br><span class="line">        <span class="comment">//011</span></span><br><span class="line">        System.out.println(Integer.toBinaryString(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//只有两位都为1，结果才为1</span></span><br><span class="line">        <span class="comment">//位与： 5 &amp; 3 = 1 (1)</span></span><br><span class="line">        System.out.println(<span class="string">&quot;位与： 5 &amp; 3 = &quot;</span> + (<span class="number">5</span> &amp; <span class="number">3</span>) + <span class="string">&quot; (&quot;</span> + Integer.toBinaryString(<span class="number">5</span> &amp; <span class="number">3</span>) + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//只要有一位是1，结果就是1</span></span><br><span class="line">        <span class="comment">//位或： 5 | 3 = 7 (111)</span></span><br><span class="line">        System.out.println(<span class="string">&quot;位或： 5 | 3 = &quot;</span> + (<span class="number">5</span> | <span class="number">3</span>) + <span class="string">&quot; (&quot;</span> + Integer.toBinaryString(<span class="number">5</span> | <span class="number">3</span>) + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//只有两位一个是1，一个是0，结果才是1</span></span><br><span class="line">        <span class="comment">//异或： 5 ^ 3 = 6 (110)</span></span><br><span class="line">        System.out.println(<span class="string">&quot;异或： 5 ^ 3 = &quot;</span> + (<span class="number">5</span> ^ <span class="number">3</span>) + <span class="string">&quot; (&quot;</span> + Integer.toBinaryString(<span class="number">5</span> ^ <span class="number">3</span>) + <span class="string">&quot;)&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//与全1做异或，然后取反</span></span><br><span class="line">        <span class="comment">//异或非： ~5 = -6 (11111111111111111111111111111010)</span></span><br><span class="line">        System.out.println(<span class="string">&quot;异或非： ~5 = &quot;</span> + (~<span class="number">5</span>) + <span class="string">&quot; (&quot;</span> + Integer.toBinaryString(~<span class="number">5</span>) + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;二进制转十进制： &quot;</span> + Integer.valueOf(<span class="string">&quot;10101&quot;</span>, <span class="number">2</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;十进制转二进制： &quot;</span> + Integer.toBinaryString(<span class="number">21</span>));</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/WeChatPay.png" alt="John Doe 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="John Doe 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Messenger%E4%BC%A0%E8%BE%93%E5%A4%A7%E7%9A%84%E6%95%B0%E6%8D%AE/" rel="prev" title="Messenger传输大的数据">
+                  <i class="fa fa-angle-left"></i> Messenger传输大的数据
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E8%B6%85%E5%BF%AB%E9%80%9F%E7%9A%842021%E5%B9%B4/" rel="next" title="超快速的2021年">
+                  超快速的2021年 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">148k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">8:59</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/cdn-hub/canvas-ribbon@1.0/js/canvas-ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
