@@ -1,8 +1,8 @@
 ---
 title: Messenger传输大的数据
-tags: 随笔
+tags: Android
 comments: false
-categories: 随笔
+categories: Android
 date: 2021-10-09 14:59:47
 ---
 ``Messenger``作为跨进程，是很常用的方法，轻便，已经基于AIDL做了很多的封装了，但是这个方法只能传输比较小的数据，如果要传输大一些的数据咋办呢？可以使用``Bundle.putBinder ``，我这里做个记录：

@@ -43,6 +43,9 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
+  exclude_languages:
+    - mermaid
+
 
 # Category & Tag
 default_category: uncategorized
@@ -75,7 +78,7 @@ symbols_count_time:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-
+ 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
