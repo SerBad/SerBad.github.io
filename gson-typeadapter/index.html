@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -131,12 +131,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,16 +238,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>最近项目中遇到一个问题，就是Gson解析的时候遇到一个为空的数组，这种时候如果忽略后台优雅地解决这个问题呢？答案就是——Gson 的序列化和反序列化：</p>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ResultDeserializer</span> <span class="keyword">implements</span> <span class="title class_">JsonDeserializer</span>&lt;BaseResult&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> BaseResult <span class="title function_">deserialize</span><span class="params">(JsonElement json, Type typeOfT, JsonDeserializationContext context)</span> <span class="keyword">throws</span> JsonParseException &#123;</span><br><span class="line">        <span class="type">JsonObject</span> <span class="variable">obj</span> <span class="operator">=</span> json.getAsJsonObject();</span><br><span class="line">        <span class="comment">//下面添加你要做的事情</span></span><br><span class="line">        <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>) != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>).isJsonObject() &amp;&amp; obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).has(<span class="string">&quot;message&quot;</span>) &amp;&amp; obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).entrySet().size() == <span class="number">1</span>) &#123;</span><br><span class="line">                obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).remove(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>).toString().equals(<span class="string">&quot;&#123;&#125;&quot;</span>)) &#123;</span><br><span class="line">                obj.remove(<span class="string">&quot;result&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">BaseResult</span> <span class="variable">baseResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>().fromJson(json, typeOfT);</span><br><span class="line">        <span class="keyword">if</span> (obj.has(<span class="string">&quot;success&quot;</span>)&amp;&amp;obj.get(<span class="string">&quot;success&quot;</span>).getAsString().equals(<span class="string">&quot;true&quot;</span>)) &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (obj.isJsonNull()) &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        baseResult.setErrorcode(obj.has(<span class="string">&quot;errorcode&quot;</span>) ? obj.get(<span class="string">&quot;errorcode&quot;</span>).getAsString() : <span class="string">&quot;&quot;</span>);</span><br><span class="line">        baseResult.setErrorcode(obj.has(<span class="string">&quot;error&quot;</span>) ? obj.get(<span class="string">&quot;errorcode&quot;</span>).getAsString() : <span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> baseResult;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后注册一下这个typeadapter</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Gson gson=<span class="keyword">new</span> <span class="title class_">GsonBuilder</span>()</span><br><span class="line">      .registerTypeAdapter(BaseResult.class, <span class="keyword">new</span> <span class="title class_">ResultDeserializer</span>())</span><br><span class="line">      .create();</span><br></pre></td></tr></table></figure>
-<p>然后就好了，你可以写一个范型的Bean的基础类，然后就可以在全局使用了,比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseResult</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean success;</span><br><span class="line">    <span class="keyword">private</span> String errorcode;</span><br><span class="line">    <span class="keyword">private</span> String error;</span><br><span class="line">    <span class="keyword">private</span> T result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><code>registerTypeAdapter</code> 还支持多种类型的，找时间可以去研究一下：</p>
+    <div class="post-body" itemprop="articleBody"><p>最近项目中遇到一个问题，就是Gson解析的时候遇到一个为空的数组，这种时候如果忽略后台优雅地解决这个问题呢？答案就是——Gson
+的序列化和反序列化： <span id="more"></span> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ResultDeserializer</span> <span class="keyword">implements</span> <span class="title class_">JsonDeserializer</span>&lt;BaseResult&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> BaseResult <span class="title function_">deserialize</span><span class="params">(JsonElement json, Type typeOfT, JsonDeserializationContext context)</span> <span class="keyword">throws</span> JsonParseException &#123;</span><br><span class="line">        <span class="type">JsonObject</span> <span class="variable">obj</span> <span class="operator">=</span> json.getAsJsonObject();</span><br><span class="line">        <span class="comment">//下面添加你要做的事情</span></span><br><span class="line">        <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>) != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>).isJsonObject() &amp;&amp; obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).has(<span class="string">&quot;message&quot;</span>) &amp;&amp; obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).entrySet().size() == <span class="number">1</span>) &#123;</span><br><span class="line">                obj.getAsJsonObject(<span class="string">&quot;result&quot;</span>).remove(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (obj.get(<span class="string">&quot;result&quot;</span>).toString().equals(<span class="string">&quot;&#123;&#125;&quot;</span>)) &#123;</span><br><span class="line">                obj.remove(<span class="string">&quot;result&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">BaseResult</span> <span class="variable">baseResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>().fromJson(json, typeOfT);</span><br><span class="line">        <span class="keyword">if</span> (obj.has(<span class="string">&quot;success&quot;</span>)&amp;&amp;obj.get(<span class="string">&quot;success&quot;</span>).getAsString().equals(<span class="string">&quot;true&quot;</span>)) &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (obj.isJsonNull()) &#123;</span><br><span class="line">            baseResult.setSuccess(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        baseResult.setErrorcode(obj.has(<span class="string">&quot;errorcode&quot;</span>) ? obj.get(<span class="string">&quot;errorcode&quot;</span>).getAsString() : <span class="string">&quot;&quot;</span>);</span><br><span class="line">        baseResult.setErrorcode(obj.has(<span class="string">&quot;error&quot;</span>) ? obj.get(<span class="string">&quot;errorcode&quot;</span>).getAsString() : <span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> baseResult;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+然后注册一下这个typeadapter <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Gson gson=<span class="keyword">new</span> <span class="title class_">GsonBuilder</span>()</span><br><span class="line">      .registerTypeAdapter(BaseResult.class, <span class="keyword">new</span> <span class="title class_">ResultDeserializer</span>())</span><br><span class="line">      .create();</span><br></pre></td></tr></table></figure>
+然后就好了，你可以写一个范型的Bean的基础类，然后就可以在全局使用了,比如：
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseResult</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean success;</span><br><span class="line">    <span class="keyword">private</span> String errorcode;</span><br><span class="line">    <span class="keyword">private</span> String error;</span><br><span class="line">    <span class="keyword">private</span> T result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>registerTypeAdapter</code>
+还支持多种类型的，找时间可以去研究一下：</p>
 <ul>
 <li>JsonSerializer &lt;?&gt;</li>
 <li>JsonDeserializer &lt;?&gt;</li>
@@ -327,14 +324,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">148k</span>
+    <span title="站点总字数">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:59</span>
+    <span title="站点阅读时长">9:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -363,6 +360,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   <script src="/js/third-party/fancybox.js"></script>
@@ -372,6 +371,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

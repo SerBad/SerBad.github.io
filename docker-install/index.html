@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -28,14 +28,11 @@
 <meta property="og:site_name" content="Ser Bad">
 <meta property="og:description" content="Windows7">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://img.blog.csdn.net/20170627104103415?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170718104004533?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="article:published_time" content="2017-07-18T02:48:42.000Z">
 <meta property="article:modified_time" content="2024-03-12T07:21:11.499Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170627104103415?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 <link rel="canonical" href="http://yoursite.com/docker-install/">
@@ -120,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows7"><span class="nav-number">1.</span> <span class="nav-text">Windows7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows10"><span class="nav-number">2.</span> <span class="nav-text">Windows10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#macOS10-10-3"><span class="nav-number">3.</span> <span class="nav-text">macOS10.10.3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intellij-Idea"><span class="nav-number">4.</span> <span class="nav-text">Intellij Idea</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows7"><span class="nav-number">1.</span> <span class="nav-text">Windows7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#windows10"><span class="nav-number">2.</span> <span class="nav-text">Windows10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#macos10.10.3"><span class="nav-number">3.</span> <span class="nav-text">macOS10.10.3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#intellij-idea"><span class="nav-number">4.</span> <span class="nav-text">Intellij Idea</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -135,12 +132,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -242,11 +239,27 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Windows7"><a href="#Windows7" class="headerlink" title="Windows7"></a>Windows7</h1><span id="more"></span>
-<p><img src="http://img.blog.csdn.net/20170627104103415?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>Windows7安装docker的时候，困扰了好久没有安装成功，今天终于试成功了。<br>之前一直报boot2docker找不到，仔细检查了报错的日志信息，其中一条就是下载boot2docker失败，但是我明确自己是下载成功的，最后直接把<code>boot2docker.iso</code> 放到 <code>C:\Users\user\.boot2docker</code> 就好了，然后就可以直接运行了。</p>
-<h1 id="Windows10"><a href="#Windows10" class="headerlink" title="Windows10"></a>Windows10</h1><p>win10，直接在官网上下载Docker安装就好了，但是遇到一个问题，就是IDEA始终无法通过API URL：<code>tcp://localhost:2375</code> 连上本地的docker，后来查遍论坛github才知道是下面的原因，打上勾就好了，真的是一大坑。<br><img src="http://img.blog.csdn.net/20170718104004533?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h1 id="macOS10-10-3"><a href="#macOS10-10-3" class="headerlink" title="macOS10.10.3"></a>macOS10.10.3</h1><p>macOS10.10.3以上也是一样的，直接安装<a href="https://store.docker.com/editions/community/docker-ce-desktop-mac">docker</a>就好了。</p>
-<h1 id="Intellij-Idea"><a href="#Intellij-Idea" class="headerlink" title="Intellij Idea"></a>Intellij Idea</h1><p>Intellij Idea使用docker的话，需要安装docker integration插件。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="windows7">Windows7</h1>
+<span id="more"></span>
+<p><img
+src="http://img.blog.csdn.net/20170627104103415?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"
+alt="这里写图片描述" />
+Windows7安装docker的时候，困扰了好久没有安装成功，今天终于试成功了。
+之前一直报boot2docker找不到，仔细检查了报错的日志信息，其中一条就是下载boot2docker失败，但是我明确自己是下载成功的，最后直接把<code>boot2docker.iso</code>
+放到 <code>C:\Users\user\.boot2docker</code>
+就好了，然后就可以直接运行了。</p>
+<h1 id="windows10">Windows10</h1>
+<p>win10，直接在官网上下载Docker安装就好了，但是遇到一个问题，就是IDEA始终无法通过API
+URL：<code>tcp://localhost:2375</code>
+连上本地的docker，后来查遍论坛github才知道是下面的原因，打上勾就好了，真的是一大坑。
+<img
+src="http://img.blog.csdn.net/20170718104004533?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU2VyX0JhZA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"
+alt="这里写图片描述" /></p>
+<h1 id="macos10.10.3">macOS10.10.3</h1>
+<p>macOS10.10.3以上也是一样的，直接安装<a
+href="https://store.docker.com/editions/community/docker-ce-desktop-mac">docker</a>就好了。</p>
+<h1 id="intellij-idea">Intellij Idea</h1>
+<p>Intellij Idea使用docker的话，需要安装docker integration插件。</p>
 <p>以上，没什么特别的内容只是自己在安装过程踩过的一个坑。</p>
 
     </div>
@@ -321,14 +334,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">148k</span>
+    <span title="站点总字数">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:59</span>
+    <span title="站点阅读时长">9:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -357,6 +370,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   <script src="/js/third-party/fancybox.js"></script>
@@ -366,6 +381,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

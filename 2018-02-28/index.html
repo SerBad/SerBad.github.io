@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -131,12 +131,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -247,16 +247,26 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。</p>
+    <div class="post-body" itemprop="articleBody"><p>架构师是什么呢？在我的认知里面，应该是一个技术的统筹和规划者，这个职位存在的意义，就是为了统筹现有的技术架构，规划未来的技术发展。一个优良的架构师需要掌握的知识量是很庞大的，但，说到底这也就是一个职位的名称，最终的目标依然是为了解决问题而存在的（虽然这是一句废话，但是这就是工作的本质，为了解决某些问题才会设置具体的岗位名称的，只是架构师是为了解决更大的技术难题而存在的）。
 <span id="more"></span>
-<p>一个良好的架构师需要具备那些技能，这就是一个见仁见智的问题，因为岗位的职责就是不一样的，架构师也总会遇到一些完全没有接触过的东西，这个时候就体现出架构师最大价值的时候了。即便如此，有些东西依然是一个架构师应该了解并且非常清楚的内容。现在花点儿时间把过往的内容总结一下，先写一篇总的思考，后面会陆续写出来的，希望不是一个坑。</p>
-<p>现代的技术架构技术栈，从本质上来说就是  <code>数据</code>- <code>应用</code>-<code>前端</code> 的组合，然后根据具体的业务场景和经验来选择就可以了。</p>
-<p>#数据端<br>数据端，简单来说就是存储数据的，也就是数据库，当然不仅限于数据库，还可以使用其他的东西来存储数据，比如可以使用文件、内存等存放数据，但是如果考虑高效读取或者永久化存储数据，选择一个合适的数据库就显得很重要了。现在常用的数据库主要有两类，一类是关系型数据库，比如mysql、oracle、sql server等常见的数据库；一类是非关系型数据库（即nosql），比如mongodb、redis、cassandra等数据库。具体选择那种数据库就需要根据具体的业务场景来分析处理，每一种数据库都有其适合的应用场景。如果是业务刚刚开始的情况下，一般都是直接选择关系型数据库，因为从关系型数据库转到nosql比从nosql转到关系型数据库相对容易的多。</p>
-<p>#应用<br>应用，一般都是代指后端应用，完成数据的读取和处理，接受和反馈给前端处理过的数据内容，当然不一定非要有后端应用，在有些场景下前端也可以处理数据。这是一个技术喷薄的时代，现在的后端应用有很多，比如Go、Java、node、PHP、Python等等，目前，主要的使用场景还是偏Java，其他的都只是了解，后面会单独抽一篇文章来详细介绍这个。综合来说，不管是设计高并发高负载的系统来说，瓶颈其实并不仅仅在后端应用上，而在于后端的整体架构上，这个才是真正限制的地方。后端应用因为选择多，所以在考虑的时候就会考虑很多，比如团队的主要主要技术语言是什么，该语言的社区支持等等，比如你的团队主要的技术能力是Java，你就不可能选择PHP。</p>
-<p>#前端<br>前端负责的是数据的采集和展示，包括web端、Android、iOS等等，虽然我知道还有其他的端，但是我只接触过上面的三种，目前我的技术栈也就仅限于上面的三种。随着无线应用的发展，前端在过去的时间里同样经历了蓬勃，比如web端的Vue、React、Angular，现在的web已经不再仅仅局限于简单地html了，现在的web开发也不再仅仅局限于展示在pc端了。混合开发、Weex、React Native、hybrid，针对移动端的发展也有很多，但是原生应用依然是最佳的选择，这是无可置疑的。</p>
-<p>#架构<br>上面只是说了，关于各种关于技术栈最基础的东西。现在说说如何把上面提到的东西整合起来的架构方法，这就是一个架构师该做的事情，上面的技术栈选好之后，就可以进行开发，但是这三者之间如何配合呢？当设计好数据库表时，对于Java而言，可选的数据库连接池就有很多，目前最高效的应该是HikariCP，目前Spring boot2.0就默认集成了HikariCP，其实对于整体架构而言，整个系统最大的限制其实是在对于数据库的增删改查上，增加CPU、内存，创建数据库集群等等都是增加数据库性能的办法。</p>
+一个良好的架构师需要具备那些技能，这就是一个见仁见智的问题，因为岗位的职责就是不一样的，架构师也总会遇到一些完全没有接触过的东西，这个时候就体现出架构师最大价值的时候了。即便如此，有些东西依然是一个架构师应该了解并且非常清楚的内容。现在花点儿时间把过往的内容总结一下，先写一篇总的思考，后面会陆续写出来的，希望不是一个坑。</p>
+<p>现代的技术架构技术栈，从本质上来说就是 <code>数据</code>-
+<code>应用</code>-<code>前端</code>
+的组合，然后根据具体的业务场景和经验来选择就可以了。</p>
+<p>#数据端
+数据端，简单来说就是存储数据的，也就是数据库，当然不仅限于数据库，还可以使用其他的东西来存储数据，比如可以使用文件、内存等存放数据，但是如果考虑高效读取或者永久化存储数据，选择一个合适的数据库就显得很重要了。现在常用的数据库主要有两类，一类是关系型数据库，比如mysql、oracle、sql
+server等常见的数据库；一类是非关系型数据库（即nosql），比如mongodb、redis、cassandra等数据库。具体选择那种数据库就需要根据具体的业务场景来分析处理，每一种数据库都有其适合的应用场景。如果是业务刚刚开始的情况下，一般都是直接选择关系型数据库，因为从关系型数据库转到nosql比从nosql转到关系型数据库相对容易的多。</p>
+<p>#应用
+应用，一般都是代指后端应用，完成数据的读取和处理，接受和反馈给前端处理过的数据内容，当然不一定非要有后端应用，在有些场景下前端也可以处理数据。这是一个技术喷薄的时代，现在的后端应用有很多，比如Go、Java、node、PHP、Python等等，目前，主要的使用场景还是偏Java，其他的都只是了解，后面会单独抽一篇文章来详细介绍这个。综合来说，不管是设计高并发高负载的系统来说，瓶颈其实并不仅仅在后端应用上，而在于后端的整体架构上，这个才是真正限制的地方。后端应用因为选择多，所以在考虑的时候就会考虑很多，比如团队的主要主要技术语言是什么，该语言的社区支持等等，比如你的团队主要的技术能力是Java，你就不可能选择PHP。</p>
+<p>#前端
+前端负责的是数据的采集和展示，包括web端、Android、iOS等等，虽然我知道还有其他的端，但是我只接触过上面的三种，目前我的技术栈也就仅限于上面的三种。随着无线应用的发展，前端在过去的时间里同样经历了蓬勃，比如web端的Vue、React、Angular，现在的web已经不再仅仅局限于简单地html了，现在的web开发也不再仅仅局限于展示在pc端了。混合开发、Weex、React
+Native、hybrid，针对移动端的发展也有很多，但是原生应用依然是最佳的选择，这是无可置疑的。</p>
+<p>#架构
+上面只是说了，关于各种关于技术栈最基础的东西。现在说说如何把上面提到的东西整合起来的架构方法，这就是一个架构师该做的事情，上面的技术栈选好之后，就可以进行开发，但是这三者之间如何配合呢？当设计好数据库表时，对于Java而言，可选的数据库连接池就有很多，目前最高效的应该是HikariCP，目前Spring
+boot2.0就默认集成了HikariCP，其实对于整体架构而言，整个系统最大的限制其实是在对于数据库的增删改查上，增加CPU、内存，创建数据库集群等等都是增加数据库性能的办法。</p>
 <p>然后后端应用和前端配合之间，现在更多的使用Restful风格来设计API的，使用的SOA、SOAP、RPC等等还有很多，除了restful之外，与我而言都是需要增长知识点的东西。</p>
-<p>#运维<br>高可用，易拓展，是一个系统有着良好发展以及可维护性的很重要的一点。对于一个不稳定的东西，是没有办法去使用的，持续集成和持续交付的设计，就关乎一个系统能够有多稳定的运行下去。</p>
+<p>#运维
+高可用，易拓展，是一个系统有着良好发展以及可维护性的很重要的一点。对于一个不稳定的东西，是没有办法去使用的，持续集成和持续交付的设计，就关乎一个系统能够有多稳定的运行下去。</p>
 <p>上面其实说了很多，但都是一些很基础的内容，也是自己的一点儿思考，当然也还有很多不足的地方。虽然，我现在主要想往Java架构的能力上走，但是需要学习的东西依然还有很多，后面会一一补上来的。以及，最近自己的阅读计划《知识的错觉》、《数据的本质：无人不是分析师》、《靠谱》，不得不感慨，时间总是那么少。</p>
 
     </div>
@@ -331,14 +341,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">148k</span>
+    <span title="站点总字数">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:59</span>
+    <span title="站点阅读时长">9:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -367,6 +377,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   <script src="/js/third-party/fancybox.js"></script>
@@ -376,6 +388,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

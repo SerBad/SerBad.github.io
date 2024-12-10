@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -131,12 +131,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,20 +238,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>记录一下<strong>Room</strong>数据库迁移过程中遇到的问题。要迁移<strong>Room</strong>数据库，只要需要实现<strong>androidx.room.migration.Migration</strong>即可。</p>
-<span id="more"></span>
-<p>下面记录三种情况</p>
-<ol>
-<li><p>修改表的结构</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">1</span>, <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//  创建新的临时表</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;CREATE TABLE publish_post_bean_new (uid TEXT NOT NULL DEFAULT &#x27;&#x27; ,value TEXT NOT NULL DEFAULT &#x27;&#x27; ,time INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(time))&quot;</span>)</span><br><span class="line">        <span class="comment">// 复制数据</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;INSERT INTO publish_post_bean_new (uid, value,time) SELECT uid, value ,strftime(&#x27;%s&#x27;,&#x27;now&#x27;)*1000 FROM publish_post_bean&quot;</span>)</span><br><span class="line">        <span class="comment">// 删除表结构</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;DROP TABLE publish_post_bean&quot;</span>)</span><br><span class="line">        <span class="comment">// 临时表名称更改</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean_new RENAME TO publish_post_bean&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>说明：<code>publish_post_bean</code>增加了一个<code>time</code>的字段，并且修改了主键的类型，先创建了一个临时表，再复制数据，其中复制过程中用<code>strftime(&#39;%s&#39;,&#39;now&#39;)</code>来获取当前的时间。</p>
-</li>
-<li><p>只是增加字段</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">2</span>, <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean ADD COLUMN article TEXT NOT NULL DEFAULT &#x27;&#x27; &quot;</span>)</span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean ADD COLUMN type INTEGER NOT NULL DEFAULT 0 &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>创建新表</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">3</span>, <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        database.execSQL(<span class="string">&quot;CREATE TABLE tag_history_bean (tagId TEXT NOT NULL DEFAULT &#x27;&#x27; ,uid TEXT NOT NULL DEFAULT &#x27;&#x27; ,value TEXT NOT NULL DEFAULT &#x27;&#x27; ,time INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(time))&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上要注意的是，需要字段的时候，需要添加字段是否是null是否有默认值，比如：<code>NOT NULL DEFAULT &#39;&#39;</code>，与你自己定义的bean类型一致。同时可以设置<code>fallbackToDestructiveMigrationOnDowngrade</code>来回退数据库升级时发生错误。</p>
-</li>
+    <div class="post-body" itemprop="articleBody"><p>记录一下<strong>Room</strong>数据库迁移过程中遇到的问题。要迁移<strong>Room</strong>数据库，只要需要实现<strong>androidx.room.migration.Migration</strong>即可。
+<span id="more"></span> 下面记录三种情况 1. 修改表的结构 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">1</span>, <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">//  创建新的临时表</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;CREATE TABLE publish_post_bean_new (uid TEXT NOT NULL DEFAULT &#x27;&#x27; ,value TEXT NOT NULL DEFAULT &#x27;&#x27; ,time INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(time))&quot;</span>)</span><br><span class="line">        <span class="comment">// 复制数据</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;INSERT INTO publish_post_bean_new (uid, value,time) SELECT uid, value ,strftime(&#x27;%s&#x27;,&#x27;now&#x27;)*1000 FROM publish_post_bean&quot;</span>)</span><br><span class="line">        <span class="comment">// 删除表结构</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;DROP TABLE publish_post_bean&quot;</span>)</span><br><span class="line">        <span class="comment">// 临时表名称更改</span></span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean_new RENAME TO publish_post_bean&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+说明：<code>publish_post_bean</code>增加了一个<code>time</code>的字段，并且修改了主键的类型，先创建了一个临时表，再复制数据，其中复制过程中用<code>strftime('%s','now')</code>来获取当前的时间。</p>
+<ol start="2" type="1">
+<li>只是增加字段 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">2</span>, <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean ADD COLUMN article TEXT NOT NULL DEFAULT &#x27;&#x27; &quot;</span>)</span><br><span class="line">        database.execSQL(<span class="string">&quot;ALTER TABLE publish_post_bean ADD COLUMN type INTEGER NOT NULL DEFAULT 0 &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建新表 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> : Migration(<span class="number">3</span>, <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">migrate</span><span class="params">(database: <span class="type">SupportSQLiteDatabase</span>)</span></span> &#123;</span><br><span class="line">        database.execSQL(<span class="string">&quot;CREATE TABLE tag_history_bean (tagId TEXT NOT NULL DEFAULT &#x27;&#x27; ,uid TEXT NOT NULL DEFAULT &#x27;&#x27; ,value TEXT NOT NULL DEFAULT &#x27;&#x27; ,time INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(time))&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+以上要注意的是，需要字段的时候，需要添加字段是否是null是否有默认值，比如：<code>NOT NULL DEFAULT ''</code>，与你自己定义的bean类型一致。同时可以设置<code>fallbackToDestructiveMigrationOnDowngrade</code>来回退数据库升级时发生错误。</li>
 </ol>
 
     </div>
@@ -326,14 +319,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">148k</span>
+    <span title="站点总字数">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:59</span>
+    <span title="站点阅读时长">9:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -362,6 +355,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   <script src="/js/third-party/fancybox.js"></script>
@@ -371,6 +366,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

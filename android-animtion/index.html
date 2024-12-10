@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="关于android的动画效果一共有三种   View Animtion 即 tweened animation 补间动画 Drawable Animation 即 frame-by-frame animation 帧动画 Property Animation 属性动画">
+    <meta name="description" content="关于android的动画效果一共有三种 &gt; + View Animtion 即 tweened animation 补间动画 &gt; + Drawable Animation 即 frame-by-frame animation 帧动画 &gt; + Property Animation 属性动画">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="android动画">
 <meta property="og:url" content="http://yoursite.com/android-animtion/index.html">
 <meta property="og:site_name" content="Ser Bad">
-<meta property="og:description" content="关于android的动画效果一共有三种   View Animtion 即 tweened animation 补间动画 Drawable Animation 即 frame-by-frame animation 帧动画 Property Animation 属性动画">
+<meta property="og:description" content="关于android的动画效果一共有三种 &gt; + View Animtion 即 tweened animation 补间动画 &gt; + Drawable Animation 即 frame-by-frame animation 帧动画 &gt; + Property Animation 属性动画">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-04-14T13:45:03.000Z">
 <meta property="article:modified_time" content="2024-03-12T07:21:11.498Z">
@@ -131,12 +131,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,55 +238,68 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>关于android的动画效果一共有三种</p>
-<blockquote>
-<ul>
-<li>View Animtion 即 tweened animation 补间动画</li>
-<li>Drawable Animation 即 frame-by-frame animation 帧动画</li>
-<li>Property Animation 属性动画</li>
-</ul>
-</blockquote>
-  <span id="more"></span>
-
-<p> 关于这几种动画一直没有搞清楚，最近折腾好久才发现自己搞错了</p>
-<p> 前两种动画效果，网上的教程很多，只放一篇吧<br> <a href="http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html">http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html</a></p>
-<p> 推荐一个Android官网最新的文档的网站，面翻墙，国内人做的镜像<br> <a href="http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html">http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html</a></p>
-<p>Property Animation的动画找到了一篇很详细的介绍的</p>
-<blockquote>
-<ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/43536355">Android属性动画完全解析(上)，初识属性动画的基本用法</a></li>
-</ul>
-</blockquote>
-<ul>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/43816093">Android属性动画完全解析(中)，ValueAnimator和ObjectAnimator的高级用法</a></li>
-<li><a href="http://blog.csdn.net/guolin_blog/article/details/44171115">Android属性动画完全解析(下)，Interpolator和ViewPropertyAnimator的用法</a></li>
-</ul>
+    <div class="post-body" itemprop="articleBody"><p>关于android的动画效果一共有三种 &gt; + View Animtion 即 tweened
+animation 补间动画 &gt; + Drawable Animation 即 frame-by-frame animation
+帧动画 &gt; + Property Animation 属性动画</p>
+<p><span id="more"></span></p>
+<p>关于这几种动画一直没有搞清楚，最近折腾好久才发现自己搞错了</p>
+<p>前两种动画效果，网上的教程很多，只放一篇吧 <a
+href="http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html"
+class="uri">http://www.cnblogs.com/feisky/archive/2010/01/11/1644482.html</a></p>
+<p>推荐一个Android官网最新的文档的网站，面翻墙，国内人做的镜像 <a
+href="http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html"
+class="uri">http://www.loverobots.cn/android-api/reference/android/view/animation/package-summary.html</a></p>
+<p>Property Animation的动画找到了一篇很详细的介绍的 &gt; * <a
+href="http://blog.csdn.net/guolin_blog/article/details/43536355">Android属性动画完全解析(上)，初识属性动画的基本用法</a>
+* <a
+href="http://blog.csdn.net/guolin_blog/article/details/43816093">Android属性动画完全解析(中)，ValueAnimator和ObjectAnimator的高级用法</a>
+* <a
+href="http://blog.csdn.net/guolin_blog/article/details/44171115">Android属性动画完全解析(下)，Interpolator和ViewPropertyAnimator的用法</a></p>
 <p>特此记录下来，免得再犯错</p>
-<p>附上<code>ObjectAnimator.ofFloat(Object target, String propertyName, float... values);</code>中第二个参数<a href="http://developer.android.com/guide/topics/graphics/prop-animation.html"><strong>propertyName</strong></a>的值</p>
+<p>附上<code>ObjectAnimator.ofFloat(Object target, String propertyName, float... values);</code>中第二个参数<a
+href="http://developer.android.com/guide/topics/graphics/prop-animation.html"><strong>propertyName</strong></a>的值</p>
 <blockquote>
 <ul>
-<li><em><strong>translationX</strong></em> and <em><strong>translationY</strong></em>  :<br>These properties control where the View is located as a delta from its left and top coordinates which are set by its layout container.</li>
+<li><strong><em>translationX</em></strong> and
+<strong><em>translationY</em></strong> : These properties control where
+the View is located as a delta from its left and top coordinates which
+are set by its layout container.</li>
+<li><strong><em>rotation</em></strong>,
+<strong><em>rotationX</em></strong>, and
+<strong><em>rotationY</em></strong> : These properties control the
+rotation in 2D (rotation property) and 3D around the pivot point.</li>
+<li><strong><em>scaleX</em></strong> and
+<strong><em>scaleY</em></strong> : These properties control the 2D
+scaling of a View around its pivot point.</li>
+<li><strong><em>pivotX</em></strong> and
+<strong><em>pivotY</em></strong> : These properties control the location
+of the pivot point, around which the rotation and scaling transforms
+occur. By default, the pivot point is located at the center of the
+object.</li>
+<li><strong><em>x</em></strong> and <strong><em>y</em></strong> : These
+are simple utility properties to describe the final location of the View
+in its container, as a sum of the left and top values and translationX
+and translationY values.</li>
+<li><strong><em>alpha</em></strong> : Represents the alpha transparency
+on the View. This value is 1 (opaque) by default, with a value of 0
+representing full transparency (not visible).</li>
 </ul>
 </blockquote>
-<ul>
-<li><em><strong>rotation</strong></em>, <em><strong>rotationX</strong></em>, and <em><strong>rotationY</strong></em>  :<br>These properties control the rotation in 2D (rotation property) and 3D around the pivot point.</li>
-<li><em><strong>scaleX</strong></em> and <em><strong>scaleY</strong></em>  :<br>These properties control the 2D scaling of a View around its pivot point.</li>
-<li><em><strong>pivotX</strong></em> and <em><strong>pivotY</strong></em>  :<br>These properties control the location of the pivot point, around which the rotation and scaling transforms occur. By default, the pivot point is located at the center of the object.</li>
-<li><em><strong>x</strong></em> and <em><strong>y</strong></em>  :<br>These are simple utility properties to describe the final location of the View in its container, as a sum of the left and top values and translationX and translationY values.</li>
-<li><em><strong>alpha</strong></em>  :<br>Represents the alpha transparency on the View. This value is 1 (opaque) by default, with a value of 0 representing full transparency (not visible).</li>
-</ul>
-<p>##update:<br> 关于上面那个值，最近发现自己错了，一直懒得改这个地方。其实那个只要你在<code>target</code> 里面你定义一个<code>setXxYy(float f)</code> 这个 <code>xxYy</code> 就可以用在 <code>propertyName</code> 。很简单的，还支持：</p>
-<ul>
-<li><strong>public static ObjectAnimator ofArgb (Object target, String propertyName, int… values)</strong></li>
-<li><strong>public static ObjectAnimator ofInt (Object target, String propertyName, int… values)</strong></li>
-<li><strong>public static ObjectAnimator ofMultiFloat (Object target, String propertyName, float[][] values)</strong></li>
-</ul>
-<p>还有一个是<code>android.animation.ValueAnimator</code>  ，其实<code>ObjectAnimator</code> 也是继承自<code>ValueAnimator</code> 的。</p>
-<ul>
-<li><strong>public static ValueAnimator ofArgb (int… values)</strong></li>
-<li><strong>public static ValueAnimator ofFloat (float… values)</strong></li>
-<li><strong>public static ValueAnimator ofInt (int… values)</strong></li>
-</ul>
+<p>##update:
+关于上面那个值，最近发现自己错了，一直懒得改这个地方。其实那个只要你在<code>target</code>
+里面你定义一个<code>setXxYy(float f)</code> 这个 <code>xxYy</code>
+就可以用在 <code>propertyName</code> 。很简单的，还支持： -
+<strong>public static ObjectAnimator ofArgb (Object target, String
+propertyName, int... values)</strong> - <strong>public static
+ObjectAnimator ofInt (Object target, String propertyName, int...
+values)</strong> - <strong>public static ObjectAnimator ofMultiFloat
+(Object target, String propertyName, float[][] values)</strong></p>
+<p>还有一个是<code>android.animation.ValueAnimator</code>
+，其实<code>ObjectAnimator</code> 也是继承自<code>ValueAnimator</code>
+的。 - <strong>public static ValueAnimator ofArgb (int...
+values)</strong> - <strong>public static ValueAnimator ofFloat (float...
+values)</strong> - <strong>public static ValueAnimator ofInt (int...
+values)</strong></p>
 <p>以上还有很多方法都是提供，值的变化的，感兴趣的可以去查看文档。</p>
 
     </div>
@@ -361,14 +374,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">148k</span>
+    <span title="站点总字数">163k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:59</span>
+    <span title="站点阅读时长">9:54</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -397,6 +410,8 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
   <script src="/js/third-party/fancybox.js"></script>
@@ -406,6 +421,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

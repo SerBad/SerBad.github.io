@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="tz-Yri7IPY7EzLsfZ82bZED-8kz7OuI1owGhkjazOdM">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="【Abstract】In order to improve the efficiency of the algorithm, the hash idea is a very useful method in the practice of the algorithm. The reasonable use of hash idea to solve the algorithm problem ca">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="哈希思想在算法中的实践">
+<meta property="og:url" content="http://yoursite.com/%E5%93%88%E5%B8%8C%E6%80%9D%E6%83%B3%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Ser Bad">
+<meta property="og:description" content="【Abstract】In order to improve the efficiency of the algorithm, the hash idea is a very useful method in the practice of the algorithm. The reasonable use of hash idea to solve the algorithm problem ca">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-10T07:54:55.000Z">
+<meta property="article:modified_time" content="2024-12-10T07:57:16.195Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/%E5%93%88%E5%B8%8C%E6%80%9D%E6%83%B3%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":"","permalink":"http://yoursite.com/%E5%93%88%E5%B8%8C%E6%80%9D%E6%83%B3%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/","path":"哈希思想在算法中的实践/","title":"哈希思想在算法中的实践"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>哈希思想在算法中的实践 | Ser Bad</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?5b1241ad0e2e245d0fd2d053888a3fe3"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ser Bad</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Have a nice day！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/categories/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa fa-archive fa-fw"></i>随笔</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%88%E5%B8%8C%E6%80%9D%E6%83%B3"><span class="nav-number">2.</span> <span class="nav-text">二、什么是哈希思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%BD%BF%E9%A2%91%E7%8E%87%E7%9B%B8%E5%90%8C"><span class="nav-number">3.</span> <span class="nav-text">三、删除字符使频率相同</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E4%B8%B2%E8%81%94%E6%89%80%E6%9C%89%E5%8D%95%E8%AF%8D%E7%9A%84%E5%AD%90%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">四、串联所有单词的子串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">方法一</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E7%9B%B4%E7%BA%BF%E4%B8%8A%E6%9C%80%E5%A4%9A%E7%9A%84%E7%82%B9%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">五、直线上最多的点数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Doe"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">北戈朝天怒风吼</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SerBad" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SerBad" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Ser_Bad" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Ser_Bad" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/2F2aMX" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;2F2aMX" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/ser_bad" title="csdn → http:&#x2F;&#x2F;blog.csdn.net&#x2F;ser_bad" rel="noopener me" target="_blank"><i class="fab fa-waze fa-fw"></i>csdn</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%93%88%E5%B8%8C%E6%80%9D%E6%83%B3%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ser Bad">
+      <meta itemprop="description" content="北戈朝天怒风吼">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="哈希思想在算法中的实践 | Ser Bad">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          哈希思想在算法中的实践
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-10 15:54:55" itemprop="dateCreated datePublished" datetime="2024-12-10T15:54:55+08:00">2024-12-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>22 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>【Abstract】In order to improve the efficiency of the algorithm, the
+hash idea is a very useful method in the practice of the algorithm. The
+reasonable use of hash idea to solve the algorithm problem can
+effectively help us solve the algorithm problem, especially some
+problems are very suitable for using hash idea to solve. This article
+will use some examples on LeetCode to explain and illustrate some
+practical cases of hashing ideas in algorithm cases.</p>
+<p>【摘要】为了提高算法的效率，哈希思想是在算法实践中很有用的的一个方法，合理运用哈希思想来解决算法问题，可以有效的帮助我们解决算法问题，尤其是有些问题非常适合使用哈希思想来解决。本文将借助LeetCode上的一些例子，来讲解和说明哈希思想在算法案例中的一些实践案例。</p>
+<p>【关键词】 算法思想 LeetCode 算法效率 算法 <span id="more"></span></p>
+<h1 id="一引言">一、引言</h1>
+<p>在日常进行代码编程和实际的工作中，经常会遇到需要设计一些算法的场景，哈希表作为数据结构中常见的一种形式，有很大的用处，合理使用哈希表可以有效的帮助到我们来设计更有效率的算法。一般地，在很多算法设计的时候，都会遇到动态集合的需求，需要支持插入、查找、删除的操作，使用哈希表来构建，会是一种非常有效的思路。哈希思想就是使用哈希表的手段，来解决一些实际的问题，即本文主要通过一些实践例子来试图讲解哈希思想的运用。</p>
+<h1 id="二什么是哈希思想">二、什么是哈希思想</h1>
+<p>哈希表也叫散列表，由三部分组成，一部分是关键字，也叫直接寻址表，一部分是数组，也叫哈希表或者散列表，一部分是哈希函数，也叫散列函数，可以通过关键字通过散列函数在数组中查找数据，这样理想的情况就是查找时间O(1)，最差的情况会出现整个列表全都查找一遍，时间是O(n)。但是这种最差的情况一般不会出现，因为哈希表的关键字在构建的时候一般尽量选择具有唯一性的值，比如使用哈希散列算法计算出来的哈希值。哈希思想简单总结来说，就是构建一个关键字函数，然后通过哈希函数来与数组部分相关联就可以查找数据了。</p>
+<p>当关键字数量比较小的时候，可以使用直接寻址法，把全部的关键字都构建出来，然后建立查找关系就可以了。当关键字比较多的时候，可以使用开放寻址法，按照需要，动态构建相关的关键字集合，然后再建立增删改查的关系就可以了。构建完全哈希表，静态存储全部关键字，可以在完全哈希表中最坏情况下完成关键字查找，这种在有些情况下也是合适的做法，具体采用何种做法，视具体情况而定。</p>
+<p>当关键字无法保证覆盖全部的数据时，就会出现关键字冲突，导致一个关键字对应多个数据，采用的方法很多，比如对于冲突的数据采用链表的方式，或者红黑树来建立查找关系，通过一一查找来寻找数据，这种方法好处是基本可以覆盖所有的数据，坏处是，在冲突的关键字上会存在数据堆积现象，可能需要把冲突的数据全部查找一遍才可以，而且还需要另外开辟一个空间来存储数据，增加空间消耗。当然还有别的办法，比如开放寻址法，当关键字冲突的时候，使用在散列法，使用该关键字再生成一个新的关键字，如果还冲突就重复再用新生成的这个关键字生成一个关键字，直到不重复为止，这种方法的优点是，保证可以放下全部的数据，节省空间，这种方法的缺点是不能真正地删除数据，因为后面新生成的关键字是可能和之前删除的关键字相关的，只能标记一下已经删除了。在开放寻址法中重新生成冲突的关键字的方法，还有链表法，还有比如线性探查法，直接依次探查下一个关键字就可以了，还有比如二次探查、双重散列、建立公共溢出区等等方法。</p>
+<p>随着哈希表数据的增加，可以使用装填因子也叫装载因子来表示当前数据的填满程度，装填因子的计算方法是装入哈希表中的关键字个数与当前哈希表总的长度的比值，当装填因子越大的时候，填充的数据越多，空间利用率越高，但是关键字冲突的可能性就会增加，查找数据的成本可能就会增加。当装填因子越小的时候，填充的数据越少，空间利用率就越低，关键字冲突的概率就会减少，查找数据的成本越低。往往在设置装填因子的时候，就需要根据实际情况做一些取舍和平衡来冲突的概率和空间利用率，然后根据装填因子来决定是否增加哈希表的长度还是什么别的处理。</p>
+<p>文本的代码实现都是使用Java实现。</p>
+<h1 id="三删除字符使频率相同">三、删除字符使频率相同</h1>
+<p>题目描述： &gt;
+给你一个下标从0开始的字符串word，字符串只包含小写英文字母。你需要选择一个下标并删除下标处的字符，使得word中剩余每个字母出现频率相同。如果删除一个字母后，并且恰好只删除一个字母，word中剩余所有字母的出现频率都相同，那么返回true，否则返回false。比如输入的字符串是<code>aaccc</code>，'c'的数量是3，数量减1，就可以让'a'和'c'的数量一样，所以返回tue。<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></p>
+<p>首先分析下该问题，首先我们需要遍历一遍字符串，首先统计出所有字母的出现频率。英文字母有26，且不考虑大小写，只有小写字母，那么我们就可以构建一个哈希表来记录字母的出现频率，表的长度最大值也就是26了，因为关键字数量很小，所以可以首先初始化出一个26长度的数组，也就是哈希表，然后再去遍历整个字符串，按照26个字母的顺序，来记录频率数据，所以其实这就相当于建立一个字母和频率一一对应关系的字典，这样就可以节约内存空间来避免保存所有的字母，因为数组可以按照字母顺序直接去读取，所以还可以节省插入时的时间消耗。</p>
+<p>然后就可以来处理上一步得到的数组了。首先如果得到的所有字母的最大数量就是1，也就是说字符串里所有的字母都不相同，那么可以直接返回为true，因为任何一个数量减1之后都可以符合条件。然后遍历一遍这个数组，可以得到数量的最大值（下方代码中的max，代表出现数量最多的次数是多少）和最小值（下方代码中的min，代表出现数量最少的次数是多少），还可以得到最大数量出现的次数（下方代码中的countMax，代表有多少种字母是这个最大数量max的），和最小数量出现的次数（下方代码中的countMin，代表有多少种字母是这个最小数量min的）。如果判断最大数量出现的次数等于全部的字符长度，那就代表该字符串全部的字母都相同，除非该字符串word的长度小于等于2可以返回为true，否则是返回false。如果最大数量只出现了一次，也就是只有一种字母数量最多，那么最大的数量减去最小的数量，差值为1或者0，比如abcc、abb、cdd、ab、ef这样的字符串，这些都是可以返回为true的，如果是abccc、abbccc、abbb这样的字符串就该返回false。如果最大数量只出现了一次，也就是只有一种字母数量最多，并且其他的字母都是1个，比如accccc、bffff这样的字符串，这些都是返回的true，除此之外的其他的情况都是false。如果最大数量出现了多个，但是最小数量的只出现了一个，并且这两种加起来的数量刚好等于字符串的长度，就代表，比如abbbccc、effgg这样的字符串，这些都应该返回true，除此之外的其他情况都是false，比如abbcccfff这样的字符串就该是false。</p>
+<p>实现的代码如下： <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equalFrequency</span><span class="params">(String word)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] hash = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : word.toCharArray()) &#123;</span><br><span class="line">            hash[c - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">            max = Math.max(hash[c - <span class="string">&#x27;a&#x27;</span>], max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (max == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">countMax</span> <span class="operator">=</span> <span class="number">0</span>, countMin = <span class="number">0</span>, min = max;</span><br><span class="line">        <span class="keyword">for</span> (Integer value : hash) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (value &lt; min) &#123;</span><br><span class="line">                countMin = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value == min) &#123;</span><br><span class="line">                countMin++;</span><br><span class="line">            &#125;</span><br><span class="line">            min = Math.min(value, min);</span><br><span class="line">            <span class="keyword">if</span> (value == max) &#123;</span><br><span class="line">                countMax++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (countMax == word.length()) <span class="keyword">return</span> word.length() &lt;= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (countMax == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> max - min == <span class="number">1</span> || max - min == <span class="number">0</span> || (countMin == <span class="number">1</span> &amp;&amp; min == <span class="number">1</span> &amp;&amp; max + min == word.length());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> countMin == <span class="number">1</span> &amp;&amp; min == <span class="number">1</span> &amp;&amp; ((countMax * max + countMin) == word.length());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+以上代码在本地执行的时候，当输入是s:wordgoodgoodgoodd时，得到的结果是false计算耗时为23ms。当输入是s:abbbcccdddeeefff时，得到的结果是true计算耗时为24ms。在leetcode上执行用时：0ms，计算的很快就得到了结果。因为环境的差异，大家在比较算法的效率高低的时候，以leetcode上的为准。</p>
+<h1 id="四串联所有单词的子串">四、串联所有单词的子串</h1>
+<p>题目描述：
+&gt;给定一个字符串s和一个字符串数组words。words中所有字符串长度相同。s中的串联子串是指一个包含words中所有字符串以任意顺序排列连接起来的子串，比如words
+=
+["ab","cd","ef"]，那么"abcdef"，"abefcd"，"cdabef"，"cdefab"，"efabcd"，和"efcdab"
+都是串联子串。"acdbef"不是串联子串，因为他不是任何words排列的连接。返回所有串联字串在s中的开始索引。你可以以任意顺序返回答案。<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></p>
+<h2 id="方法一">方法一</h2>
+<p>看到这样的问题时，最简单的做法是，首先生成word数组中的全排列，生成全排列的方法有很多，比如邻位对换法、回溯算法等等，这里不做赘述，但是无论是何种全排列方法，随着word数组中的数量增加，最后的时间复杂度都是指数级增长的，最后有可能会花费相当长的时间来生成全排列，如果电脑资源不够的话，甚至会生成失败，对资源是一种极大的浪费。所以看到这样的问题，如何缩短时间复杂度呢？问题的关键就是如何处理关键字。</p>
+<p>滑动窗口也叫双指针，是我们在设计算法的时候的一个很有用的方法。在面对需要我们处理字符串的情况下，可以设计一个窗口，窗口的大小可以是固定的，也可以动态变化的，之后按照一定的方向依次去扫描字符串或者数组或者其他的数据形式，然后在每次扫描之后处理窗口中出现的字符串或者数组或者其他的数据。在本问题中，首先统计下words中字符串出现的次数然后保存在wordMap中，当做我们当前要比较的哈希表，这样在之后进行比较的时候就不用每次都再来计算一遍wordMap了。因为words中所有的字符串长度相同，所以可以把单个字符串的长度记为wordLength，把words的字符数量记为n，那words中所有的字符串拼到一起，可以组成的字符串的长度是maxWordLength。然后从左往右，每次开始的时候复制一份wordMap到diffMap中，作为当前比较的哈希表，依次读取n个长度为wordLength的字符串，然后判断是否在diffMap中，如果出现了不存在于diffMap中的字符串，就代表该次读取出来的字符串不符合要求，直接开始下一轮读取。那如何判断该次读取出的字符串是否存在于diffMap中呢？可以把diffMap中的对应的值减1，一直减到如果出现小于0的情况出现，就表示当前的读取出来的字符串不符合要求，因为每次读取出来的都是n个字符串，在进行减1操作的时候，除非全部符合diffMap的字符数，否者就会出现某一个关键字减1之后小于0的情况出现，这样就可以就可以简化运算，也就是说除非出现小于0的情况，除此之外就表示都是符合要求的。</p>
+<p>实现的代码如下，在leetcode上执行用时：91ms。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">findSubstring</span><span class="params">(String s, String[] words)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (words.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="type">int</span> <span class="variable">wordLength</span> <span class="operator">=</span> words[<span class="number">0</span>].length(), maxWordLength = wordLength * words.length;</span><br><span class="line">        Map&lt;String, Integer&gt; wordMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            wordMap.put(word, wordMap.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Integer&gt; diffMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length() - maxWordLength + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            diffMap.clear();</span><br><span class="line">            diffMap.putAll(wordMap);</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">haveIndex</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">0</span>; n &lt; words.length; n++) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">word</span> <span class="operator">=</span> s.substring(i + n * wordLength, i + (n + <span class="number">1</span>) * wordLength);</span><br><span class="line">                <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> diffMap.getOrDefault(word, <span class="number">0</span>) - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (value &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    diffMap.put(word, value);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    haveIndex = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (haveIndex) &#123;</span><br><span class="line">                result.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## 方法二
+如果仔细观察，就会发现以上的算法存在一种浪费的情况，那就是每次读取了n个字符串出来做比较的时候，会发现是存在重复读取字符串来比较的。基于此，可以优化以上的算法。在初始化wordMap的时候，都标记为负数，作为哈希表。从左往右读取，记字符串s的长度为ls，记开始读取字符串的位置i，记words中的单个字符串长度为wordLength，words的字符串数量记为n，从i开始，读取n个长度为wordLength的字符串，那就是把i~ls的字符串划分为数个长度为wordLength的字符串，这样，最后几个不满足wordLength的字符串就可以舍弃掉了，因为无法构成一个符合要求的字符串了。</p>
+<p>设计好了滑动的窗口，然后就是开始移动，每次开始移动的时候，把wordMap中的数据写入到diffMap中初始化diffMap作为当前的哈希表，每次移动一个长度为wordLength的字符串，然后给diffMap中对应的值加1，如果出现了等于0的情况就删除该键值，如果diffMap中刚好全都被移除了，表示刚好符合要求，记录下当前的值，除此之外表示全都不满足要求。需要注意的是，外层循环的部分，只需要0~wordLength-1次，因为wordLength长度的字符串才能符合要求，所以实际上的开始位置在wordLength位置上的时候，就已经在第一轮的滑动窗口中比较过了。</p>
+<p>最终的实现代码如下，在leetcode上执行用时：11ms。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">findSubstring</span><span class="params">(String s, String[] words)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (words.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="type">int</span> <span class="variable">wordLength</span> <span class="operator">=</span> words[<span class="number">0</span>].length(), maxWordLength = wordLength * words.length;</span><br><span class="line">        Map&lt;String, Integer&gt; wordMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            wordMap.put(word, wordMap.getOrDefault(word, <span class="number">0</span>) - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Integer&gt; diffMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; wordLength &amp;&amp; i + maxWordLength &lt;= s.length(); i++) &#123;</span><br><span class="line">            diffMap.clear();</span><br><span class="line">            diffMap.putAll(wordMap);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; i + (j + <span class="number">1</span>) * wordLength &lt;= s.length(); j++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">startIndex</span> <span class="operator">=</span> i + j * wordLength;</span><br><span class="line">                <span class="type">int</span> <span class="variable">endIndex</span> <span class="operator">=</span> i + (j + <span class="number">1</span>) * wordLength;</span><br><span class="line">                <span class="keyword">if</span> (j &gt;= words.length) &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">firstWord</span> <span class="operator">=</span> s.substring(startIndex - maxWordLength, endIndex - maxWordLength);</span><br><span class="line">                    <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> diffMap.getOrDefault(firstWord, <span class="number">0</span>) - <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span> (value == <span class="number">0</span>) &#123;</span><br><span class="line">                        diffMap.remove(firstWord);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        diffMap.put(firstWord, value);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="type">String</span> <span class="variable">nextWord</span> <span class="operator">=</span> s.substring(startIndex, endIndex);</span><br><span class="line">                <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> diffMap.getOrDefault(nextWord, <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (value != <span class="number">0</span>) &#123;</span><br><span class="line">                    diffMap.put(nextWord, value);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    diffMap.remove(nextWord);</span><br><span class="line">                    <span class="keyword">if</span> (diffMap.isEmpty()) &#123;</span><br><span class="line">                        result.add(endIndex - maxWordLength);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到相比于方法一，速度提高了8倍。滑动窗口往往可以和其他算法相互结合，比如堆栈、队列，根据实际的需要，可以帮助提高算的效率。在利用哈希表来设计算的时候，如果可以使用到滑动窗口的话会非常的有用。</p>
+<h1 id="五直线上最多的点数">五、直线上最多的点数</h1>
+<p>题目描述： &gt;给你一个数组points，其中 points[i] = [xi, yi] 表示 X-Y
+平面上的一个点。求最多有多少个点在同一条直线上。<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>看到这样的描述，可以显而易见的发现，这是一个二维平面坐标，也就是可以使用二元一次函数来表示是，也就是<strong>y=ax+b</strong>形式的函数，其中的特例是<strong>x=c</strong>(c表示一个常数)，二元一次方程都可以用上面的函数来表示，用这样的函数形式就可以表示X-Y平面上所有的直线了。这样的话就可以用两个点来表示一条直线了，然后只需要判断剩下的点是否在当前这条直线上就可以了。那我们借此来构建哈希函数，然后按照分桶算法来给点分组，然后计数，然后输出其中最大的值即可。</p>
+<p>分桶算法就是很直观的一种哈希思想实现，按照关键词，把数据分成多组，然后对数组进行处理，每个桶分别维护自己内部的数据，然后管理每个桶就可以了。在本问题中因为两点成一条直线，所以可以用[xi,
+yi]和[xi+1,
+yi+1]两两相减，然后就可以按照<strong>y=ax+b</strong>来计算出a和b，或者当x坐标都一样的时候就可以按照<strong>x=c</strong>来计算出c，对于<strong>y=ax+b</strong>的形式，首先按照a分成一组，然后在这一组数据中再按照b再进行一次划分，细划分出新的桶来，另外对于<strong>x=c</strong>的形式，把c作为关键字划分出数据来当做一个桶。以a、b、c作为哈希表的关键字分别计算，这样的话就可以把数据分到一个个的桶中，然后再去计数有多少点是一条直接上的就可以了。</p>
+<p>以下是代码实现，在leetcode上执行用时: 29ms。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxPoints</span><span class="params">(<span class="type">int</span>[][] points)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (points.length &lt;= <span class="number">2</span>) <span class="keyword">return</span> points.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        Map&lt;Float, Map&lt;Float, Set&lt;<span class="type">int</span>[]&gt;&gt;&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Set&lt;<span class="type">int</span>[]&gt;&gt; xMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; points.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">f</span> <span class="operator">=</span> i + <span class="number">1</span>; f &lt; points.length; f++) &#123;</span><br><span class="line">                <span class="type">float</span> <span class="variable">dx</span> <span class="operator">=</span> (<span class="type">float</span>) points[i][<span class="number">0</span>] - points[f][<span class="number">0</span>];</span><br><span class="line">                <span class="type">float</span> <span class="variable">dy</span> <span class="operator">=</span> (<span class="type">float</span>) points[i][<span class="number">1</span>] - points[f][<span class="number">1</span>];</span><br><span class="line">                <span class="type">float</span> <span class="variable">pi</span> <span class="operator">=</span> dy / dx;</span><br><span class="line">                <span class="type">float</span> <span class="variable">b</span> <span class="operator">=</span> points[i][<span class="number">1</span>] - pi * points[i][<span class="number">0</span>];</span><br><span class="line">                Set&lt;<span class="type">int</span>[]&gt; value = <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">if</span> (dx == <span class="number">0</span>) &#123;</span><br><span class="line">                    value = xMap.computeIfAbsent(points[i][<span class="number">0</span>], k -&gt; <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (value == <span class="literal">null</span>) &#123;</span><br><span class="line">                    Map&lt;Float, Set&lt;<span class="type">int</span>[]&gt;&gt; bMap = map.computeIfAbsent(pi, k -&gt; <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;());</span><br><span class="line">                    value = bMap.computeIfAbsent(b, k -&gt; <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;());</span><br><span class="line">                &#125;</span><br><span class="line">                value.add(points[i]);</span><br><span class="line">                value.add(points[f]);</span><br><span class="line">                result = Math.max(value.size(), result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结">总结</h1>
+<p>通过以上的了例子来讲解说明，在实际中如何使用哈希表来设计高效的算法。在实际的操作做，关键字、哈希表、哈希函数，有很多种的设计方式，按照自己的需要选择合适的就可以了。其中关于关键字函数的设计有很多种，比如直接寻址法、平方取中法、折叠法、随机数法等。在实际的查找过程中，还可以和其他的算法相互结合来优化算法的效率，比如差分算法、分桶算法、二叉树、平衡树、链表、队列、前缀和等等。在数据量较大的情况下，尤其在现实的实际使用场景中，关键字冲突有可能频繁地出现，在冲突出现的时候，可以使用二叉树、红黑树、队列等等方式来保存数据，但是如果出现最差的情况，就可能出现关键字全部都一样，导致所有的数据都堆积在一起，降低查询的效率。这也是在工业上设计哈希函数的时候要注意的问题，要对极差情况，攻击者可以使用特定的方式，来让哈希表出现最差的情况，从而拖慢速度，从而发起攻击。</p>
+<p>如何设计合理的哈希函数，往往都是根据具体的情况来分析。但总的原则来说就是希望关键字尽量的唯一不会出现重复冲突，还有就是尽量地让数据保持平衡，把数据尽量的散列开来，不要让某个或者某些关键字出现大量的数据堆积，从而拖慢速度。在实际应用中，哈希表往往是动态扩容的，当装填因子渐渐变大的时候，如何进行动态扩容也是会在实际运用中可能需要面对的问题。一般地可以在装填因子达到某个阈值之后，就去申请一个新的更大的哈希表来保存数据，然后把数据迁移过去。当然也可以在装填因子变得太小的时候，缩小哈希表，从而节省空间，但是否需要这么做，要根据具体的信息来决定，比如这种装填因子是否只是短期内的波动，如果频繁地更新哈希表，也会导致效率下降，比如波峰可能只有一段时间内，超过一段时间之后，就恢复成可接受的装填因子了。这些信息都可能会决定是否需要动态缩表或者动态扩表。如果一次性的完成动态缩表或者扩表，就可能对当前正在进行的操作造成效率降低的问题。可以先申请新的哈希表，把新的数据写入到新的哈希表中，然后分批把旧的数据写入到新的哈希表来完成缩表或者扩表，对于这个时候的查询和删除来说，就需要先去在新的哈希表操作，然后再去旧的哈希表操作，这样既可以降低动态改变哈希表的影响，也可以完成动态改变哈希表。所以操作的复杂度、时间复杂度、空间复杂度，就需要做出权衡，如果可以全部顾及那自然是最好的，否则就需要选择一个对自己最好的选择。</p>
+<p>本文中只是讲了比较简单一些的例子，在实际运用中，会比上面的例子管理的数据庞大得多，但是基本的哈希思想是不变的，就是创建一个哈希表，然后来建立快速的查找关系，尤其在大量的数据面前，是可以收获到很好的效果的。比如安全加密、数据校验、LRU缓存淘汰算法、word中的拼写检查等等，这些都会用到哈希思想。还有在大型系统中的负载均衡，如何快速地管理系统中的服务器并找到对应的IP地址，就可以建立一个哈希表来增删改查从而达到负载均衡的目的。还有比如数据分片，管理大型日志库，如何查找日志库中查询频率最高的关键字，如何判断图片是否在图库之中等等。还有分布式的存储、布谷鸟哈希表等等，这里不多做赘述，这些的应用都会很常见。合理使用哈希思想确实可以帮助我们有效地提高算法效率。</p>
+<h1 id="参考文献">参考文献</h1>
+<p>[1] Thomas H.Cormen, Charles E.Leiserson, Ronald L.Rivest, Clifford
+Stein：算法导论[M].殷建平，徐云，王刚，刘晓光，苏明，邹恒明，王宏志.
+机械工业出版社，2012-12</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li
+id="fn1"><p>https://leetcode.cn/problems/remove-letter-to-equalize-frequency<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li
+id="fn2"><p>https://leetcode.cn/problems/substring-with-concatenation-of-all-words<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://leetcode.cn/problems/max-points-on-a-line/<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/WeChatPay.png" alt="John Doe 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="John Doe 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9C%A8%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E5%AE%9E%E8%B7%B5/" rel="prev" title="动态规划在算法中的实践">
+                  <i class="fa fa-angle-left"></i> 动态规划在算法中的实践
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">163k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">9:54</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/gh/cdn-hub/canvas-ribbon@1.0/js/canvas-ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.js" integrity="sha256-+2+qOqR8CKoHh/AsVR9k2qaDBKWjYNC2nozhYmv5j9k=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
