@@ -29,7 +29,7 @@
 <meta property="og:description" content="【摘要】为了提高算法的效率，动态规划是在算法实践中经常使用的一个思想，有些问题会非常适合使用动态规划的思想来设计算法。本文将借助LeetCode上的一些例子，来讲解和说明动态规划在算法案例中的一些实践。 【关键词】 动态规划 LeetCode 算法效率 算法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-10T07:53:58.000Z">
-<meta property="article:modified_time" content="2024-12-10T08:53:50.536Z">
+<meta property="article:modified_time" content="2024-12-12T09:17:04.383Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -134,7 +134,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -281,21 +281,23 @@ role="doc-noteref"><sup>1</sup></a></p>
 ，转成二进制表示的话： 0 : 000，1 : 001，2 : 010，3 : 011，4 : 100，5 :
 101，6 : 110，7 : 111</p>
 <p>以上符合条件的数，分别是<code>'0'</code>，<code>'1'</code>，<code>'10'</code>，<code>'100'</code>，<code>'101'</code>，一共5个数。我们可以把上面的数，使用二叉字典树的形式表达出来，如下图。</p>
-<pre class="mermaid">graph TB;
-root(['110'])-->0((0))
-root-->1((1))
-0-->00((0))
-0-->01((1))
-1-->10((0))
-1-->11((1))
-00-->000((0))
-00-->001((1))
-01-->010((0))
-01-->011((1))
-10-->100((0))
-10-->101((1))
-11-->110((0))
-11-->111((_))</pre>
+<pre class="mermaid">
+graph TD
+root([&#39;110&#39;])--&gt;0((0))
+root--&gt;1((1))
+0--&gt;00((0))
+0--&gt;01((1))
+1--&gt;10((0))
+1--&gt;11((1))
+00--&gt;000((0))
+00--&gt;001((1))
+01--&gt;010((0))
+01--&gt;011((1))
+10--&gt;100((0))
+10--&gt;101((1))
+11--&gt;110((0))
+11--&gt;111((_))
+</pre>
 <p>可以发现，里面是会有很多重复计算的，当数字小的时候，这点儿耗时可以忽略，但是当数字很大的时候，这种计算就会是非常耗时的，有着更多无意义的重复计算。
 先观察可以发现，当右子树，连续出现两个1的时候，代表着后面的数全部都是不符合要求的。</p>
 <p>也就是说，我们要计算的二进制表示中不含连续的1的数量，可以描述成要计算根节点为0的满二叉树中不含连续的1的路径数量。通过计算，我们可以列出来已知的一些结果。可以发现，要计算的根节点为0的满二叉树中不含连续1的路径数量，可以发现是上面2层不含连续1的路径数量之和。结果如下：</p>
@@ -497,7 +499,7 @@ href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 
   <div class="copyright">
     &copy; 2015 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="user"></i>
     </span>
@@ -509,14 +511,14 @@ href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">163k</span>
+    <span title="站点总字数">168k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">9:54</span>
+    <span title="站点阅读时长">10:13</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
@@ -545,7 +547,7 @@ href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 
   
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"version":"7.1.2","options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"options":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.min.js","integrity":"sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
 
 
